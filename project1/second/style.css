@@ -1,0 +1,286 @@
+html {
+    font-size: 16px;
+    filter: blur(.6px);
+    background-color: #0b0a0a;
+    color: #f8f8f8;
+  }
+
+  @media (max-width: 900px) {
+    html {
+      font-size: 10px;
+    }
+  }
+
+  .frame {
+    min-height: 80vh !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+  }
+
+  .title {
+    font-size: 6rem;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%)translateY(-50%);
+    font-family: "elza-narrow", sans-serif;
+font-weight: 600;
+font-style: normal;
+
+  }
+
+  .written {
+    font-size: 2rem;
+    text-align: center;
+    position: absolute;
+    top: 120%;
+    left: 50%;
+    transform: translateX(-50%)translateY(-50%);
+    font-family: "elza-narrow", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  .writtencaps {
+    font-size: 2rem;
+    text-align: center;
+    position: absolute;
+    top: 124%;
+    left: 50%;
+    transform: translateX(-50%)translateY(-50%);
+    font-family: "elza-narrow", sans-serif;
+font-weight: 600;
+font-style: normal;
+  
+  }
+
+
+  .attribution {
+    font-size: 2rem;
+    display: inline-block;
+    box-sizing: border-box;
+    width: 49.5%;
+    padding: 20px;
+    flex: 0 0 calc(50% - 20px);
+    
+    
+    
+  }
+
+  .attribution-left {
+    text-align: right;
+    font-family: "elza-narrow", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .attribution-right {
+    display: inline-block;
+    font-family: "elza-narrow", sans-serif;
+font-weight: 600;
+font-style: normal;
+
+  }
+
+  .tabone {
+    font-size: 2rem;
+    text-align: center;
+    font-family: "elza-narrow", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  .tabonecaps {
+    font-size: 2rem;
+    text-align: center;
+    font-family: "elza-narrow", sans-serif;
+font-weight: 600;
+font-style: normal;
+
+  }
+ 
+  .tabtwo {
+    font-size: 2rem;
+    text-align: center;
+    font-family: "elza-narrow", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  .tabtwocaps {
+    font-size: 2rem;
+    text-align: center;
+    font-family: "elza-narrow", sans-serif;
+font-weight: 600;
+font-style: normal;
+
+  }
+
+  .tabthreecaps {
+    font-size: 4rem;
+    text-align: center;
+    font-family: "elza-narrow", sans-serif;
+font-weight: 600;
+font-style: normal;
+
+  }
+
+  .tabfour {
+    font-size: 2rem;
+    text-align: center;
+    font-family: "elza-narrow", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  .tabfourcaps {
+    font-size: 2rem;
+    text-align: center;
+    font-family: "elza-narrow", sans-serif;
+font-weight: 600;
+font-style: normal;
+
+  }
+
+  .tabfive {
+    font-size: 2rem;
+    text-align: center;
+    font-family: "elza-narrow", sans-serif;
+font-weight: 400;
+font-style: normal;
+  }
+  .tabfivecaps {
+    font-size: 2rem;
+    text-align: center;
+    font-family: "elza-narrow", sans-serif;
+font-weight: 600;
+font-style: normal;
+
+  }
+
+  .tabsix {
+    font-size: 2rem;
+    text-align: center;
+    font-family: "elza-narrow", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  .tabsixcaps {
+    font-size: 2rem;
+    text-align: center;
+    font-family: "elza-narrow", sans-serif;
+font-weight: 600;
+font-style: normal;
+
+  }
+  .tabseven{
+    font-size: 2rem;
+    text-align: center;
+    font-family: "elza-narrow", sans-serif;
+font-weight: 400;
+font-style: normal;
+  }
+  .tabeight {
+    font-size: 2rem;
+    text-align: center;
+    font-family: "elza-narrow", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  .tabeightcaps {
+    font-size: 2rem;
+    text-align: center;
+    font-family: "elza-narrow", sans-serif;
+font-weight: 600;
+font-style: normal;
+
+  }
+  .tabnine {
+    font-size: 2rem;
+    text-align: center;
+    font-family: "elza-narrow", sans-serif;
+font-weight: 400;
+font-style: normal;
+  }
+  .tabninecaps {
+    font-size: 2rem;
+    text-align: center;
+    font-family: "elza-narrow", sans-serif;
+font-weight: 600;
+font-style: normal;
+
+  }
+  .tabten {
+    font-size: 2rem;
+    text-align: center;
+    font-family: "elza-narrow", sans-serif;
+font-weight: 400;
+font-style: normal;
+  }
+  .tabtencaps {
+    font-size: 2rem;
+    text-align: center;
+    font-family: "elza-narrow", sans-serif;
+font-weight: 600;
+font-style: normal;
+
+  }
+  .tabelevencaps {
+    font-size: 2rem;
+    text-align: center;
+    font-family: "elza-narrow", sans-serif;
+font-weight: 600;
+font-style: normal;
+
+  }
+  .tabtwelve {
+    font-size: 2rem;
+    text-align: center;
+    font-family: "elza-narrow", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  .tabtwelvecaps {
+    font-size: 2rem;
+    text-align: center;
+    font-family: "elza-narrow", sans-serif;
+font-weight: 600;
+font-style: normal;
+
+  }
+  .tabthirteen {
+    font-size: 2rem;
+    text-align: center;
+    font-family: "elza-narrow", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  .tabfourteen {
+    font-size: 2rem;
+    text-align: center;
+    font-family: "elza-narrow", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+        
+  }
+  .tabfourteencaps {
+    font-size: 2rem;
+    text-align: center;
+    font-family: "elza-narrow", sans-serif;
+font-weight: 600;
+font-style: normal;
+
+  }
+  .tabfiftteencaps {
+    font-size: 2rem;
+    text-align: center;
+    font-family: "elza-narrow", sans-serif;
+font-weight: 400;
+font-style: normal;
+
+  }
+
+
+
+
+
+  

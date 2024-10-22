@@ -1,0 +1,75 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.section {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 400vw;
+  transform: rotate(90deg) translateY(-100vh);
+  transform-origin: top left;
+}
+
+.heading-primary {
+  font-family: "forma-djr-display", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 6vw;
+  background: #efefec;
+  color: #fd0019;
+  text-decoration: none;
+}
+
+.intro h2:first-of-type {
+  color: #ff0000; 
+  font-size: 10vw;
+
+}
+
+.intro h2:last-of-type {
+  color: #ff0000; 
+  font-family: "richmond-display", sans-serif;
+  font-weight: 200;
+  font-style: normal;
+  font-size: 6vw;
+}
+
+.intro,
+.studio,
+.lab,
+.workshops {
+  background: #efefec;
+  color: #fd0019;
+  text-decoration: none;
+}
+.intro,
+.studio,
+.lab,
+.workshops{
+  text-decoration: none; /* Removing underline from anchor tags */
+}
+
+.outer-wrapper {
+  width: 100vh;
+  height: 100vw;
+  transform: rotate(-90deg) translateX(-100vh);
+  transform-origin: top left;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  position: absolute;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
