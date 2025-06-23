@@ -1,44 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://use.typekit.net/qki8jcc.css">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="assets/style.css">
-    <title>Karsyn Cardoza Web Designs</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Karsyn Cardoza</title>
+  <link rel="stylesheet" href="assets/style.css" />
+  <link rel="stylesheet" href="https://use.typekit.net/pja8ouo.css">
 </head>
 <body>
-    
-    <main class="outer-wrapper">
-      <div class="wrapper">
+  <header class="site-header">
+    <div class="header-left">
+      <h1><a href="#" id="home-link">Karsyn Cardoza</a></h1>
+      <p>Designer</p>
+    </div>
+    <div class="header-center" id="project-title"><p></p></div>
+    <div class="header-right">
+      <a href="#info" class="header-link">Info</a>
+      <a href="#follow" class="header-link">Follow</a>
+    </div>
+  </header>
 
-        <section class="section intro">
-          <div>
-            <h2 class="heading-primary">welcome</h2>
-            <h2 class="heading-primary">to karsyn cardoza's web designs!</h2>
-          </div>
-        </section>
-        
+  <div class="main-layout">
+    <div class="left-column">
+      <h3>i. Self-Directed</h3>
+      <a class="project-link" onclick="showProject('perform')">1. Perform—Produce</a>
+      <a class="project-link" onclick="showProject('common')">2. Common Dimensions</a>
+      <a class="project-link" onclick="showProject('chair')">3. Dis/Assembly Chair</a>
+    </div>
 
-        <a href="studioprojects/p1/index.html" class="section studio">
-            <h2 class="heading-primary">stories as networks</h2>
-        </a>
-
-        <a href="studioprojects/p2/index.html" class="section studio">
-          <h2 class="heading-primary">elastic collection</h2>
-      </a>
-
-      <a href="studioprojects/p3/index.html" class="section studio">
-        <h2 class="heading-primary">real-time data</h2>
-    </a>
-
-    <a href="studioprojects/p4/index.html" class="section studio">
-      <h2 class="heading-primary">city collection</h2>
-  </a>
-  
+    <div class="right-column">
+      <div id="home-preview">
+        <img src="media/olympic national park /olympic_book_m3.png" alt="Preview 1" />
+        <img src="media/home2.jpg" alt="Preview 2" />
+        <img src="media/home3.jpg" alt="Preview 3" />
       </div>
-    </main>
-    <script src="assets/script.js"></script>
+
+      <div id="perform" class="project-content">
+        <h2>i.1. Perform—Produce</h2>
+        <p><em>Graphic Design MFA Thesis (RISD)</em><br><strong>Perform—Produce</strong></p>
+        <p>The Revival captures the resurgence of Western culture as the younger generations reimagine its traditions with fresh creativity. Through bold visuals and stories, it highlights how cowboy culture, y'allternative fashion, and modern country music blend authenticity with innovation. This project celebrates the enduring spirit of the West, alive and thriving in a new era. <em>interesting</em>...</p>
+      </div>
+
+      <div id="common" class="project-content">
+        <h2>i.2. Common Dimensions</h2>
+        <p>Description or media here...</p>
+      </div>
+
+      <div id="chair" class="project-content">
+        <h2>i.3. Dis/Assembly Chair</h2>
+        <p>Description or media here...</p>
+      </div>
+    </div>
+
+
+  <script src="assets/script.js"></script>
 </body>
 </html>

@@ -1,78 +1,178 @@
-* {
+/* === Base Styles === */
+body {
   margin: 0;
-  padding: 0;
+  font-family: "Georgia", serif;
+  padding-top: 100px; /* Height of fixed header */
 }
 
-.section {
-  width: 100vw;
-  height: 100vh;
+/* === Header === */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 1rem 2rem;
+  background-color: #fff;
 }
 
-.wrapper {
+.header-left {
   display: flex;
-  flex-direction: row;
-  width: 500vw;
-  transform: rotate(90deg) translateY(-100vh);
-  transform-origin: top left;
+  flex-direction: column;
+  line-height: 1.2;
 }
 
-.heading-primary {
-  font-family: "forma-djr-display", sans-serif;
-  font-weight: 600;
+.header-left h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-family: "area-normal", sans-serif;
+  font-weight: 500;
   font-style: normal;
-  font-size: 6vw;
-  background: #efefec;
-  color: #fd0019;
-
-
-}
-.intro {
-text-align: left;
-}
-.intro h2:first-of-type {
-  color: #ff0000; 
-  font-size: 12vw;
-
-
 }
 
-.intro h2:last-of-type {
-  color: #ff0000; 
-  font-family: "richmond-display", sans-serif;
-  font-weight: 200;
+.header-left p {
+  margin: 0;
+  font-size: 1rem;
+  color: #555;
+  font-family: "droid-sans-mono", monospace;
+  font-weight: 400;
   font-style: normal;
-  font-size: 5vw;
 }
 
-.intro,
-.studio,
-.lab,
-.workshops {
-  background: #efefec;
-  color: #fd0019;
+.header-right {
+  display: flex;
+  gap: 2rem;
+  flex-shrink: 0;
+  margin-right: 4rem;
+}
+
+.header-link {
   text-decoration: none;
+  color: #000;
+  font-size: 1.8rem;
+  cursor: pointer;
 }
-.intro,
-.studio,
-.lab,
-.workshops{
-  text-decoration: none; }
 
-.outer-wrapper {
-  width: 100vh;
-  height: 100vw;
-  transform: rotate(-90deg) translateX(-100vh);
-  transform-origin: top left;
-  overflow-y: scroll;
-  overflow-x: hidden;
+.header-link:hover {
+  text-decoration: underline;
+}
+
+#home-link {
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+}
+
+#home-link:hover {
+  text-decoration: underline;
+}
+
+.header-center {
   position: absolute;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+  top: 1.4rem;
+  left: 50%;
+  transform: translateX(-50%);
+    font-family: "Droid Sans Mono", monospace;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1rem;
+    line-height: 1.2;
+  white-space: nowrap;
+  pointer-events: none;
 }
 
-::-webkit-scrollbar {
+/* === Layout === */
+.main-layout {
+  display: flex;
+  height: calc(100vh - 100px); /* Adjusted for header height */
+}
+
+.left-column {
+  width: 30%;
+  background-color: #fff;
+  padding: 2rem;
+  overflow-y: hidden;
+  font-family: "area-normal", sans-serif;
+font-weight: 800;
+font-style: normal;
+}
+
+.right-column {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: hidden;
+}
+
+/* === Project Links === */
+.project-link {
+  display: block;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  color: #000;
+  text-decoration: none;
+  font-family: "area-normal", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.project-link:hover {
+  text-decoration: underline;
+}
+
+/* === Project Content Toggle === */
+.project-content {
   display: none;
+}
+
+.project-content.active {
+  display: block;
+}
+
+.project-content p,
+.project-description {
+  font-family: "Droid Sans Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* === Home Preview Images === */
+#home-preview {
+  position: absolute;
+  top: 100px; /* Push below header */
+  right: 0;
+  width: 70%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  z-index: 1;
+}
+
+#home-preview img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+.home-preview {
+  display: none;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 0;
+}
+
+.home-preview.active {
+  display: grid;
 }
