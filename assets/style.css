@@ -1,8 +1,12 @@
 /* === Base Styles === */
 body {
   margin: 0;
-  font-family: "Georgia", serif;
+  font-size: 1.4rem;
+  font-family: "area-normal", sans-serif;
+  font-weight: 500;
+  font-style: normal;
   padding-top: 100px; /* Height of fixed header */
+
 }
 
 /* === Header === */
@@ -18,7 +22,6 @@ body {
   flex-wrap: wrap;
   width: 100%;
   padding: 1rem 2rem;
-  background-color: #fff;
 }
 
 .header-left {
@@ -29,19 +32,12 @@ body {
 
 .header-left h1 {
   margin: 0;
-  font-size: 1.8rem;
-  font-family: "area-normal", sans-serif;
-  font-weight: 500;
-  font-style: normal;
+  font-size: 1.4rem;
+  font-weight: 400;
 }
 
 .header-left p {
   margin: 0;
-  font-size: 1rem;
-  color: #555;
-  font-family: "droid-sans-mono", monospace;
-  font-weight: 400;
-  font-style: normal;
 }
 
 .header-right {
@@ -54,7 +50,7 @@ body {
 .header-link {
   text-decoration: none;
   color: #000;
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   cursor: pointer;
 }
 
@@ -100,6 +96,7 @@ body {
   font-family: "area-normal", sans-serif;
 font-weight: 800;
 font-style: normal;
+font-size: 1.4rem;
 }
 
 .right-column {
@@ -118,6 +115,7 @@ font-style: normal;
   font-family: "area-normal", sans-serif;
   font-weight: 500;
   font-style: normal;
+  font-size: 1.4rem;
 }
 
 .project-link:hover {
@@ -145,7 +143,7 @@ font-style: normal;
 /* === Home Preview Images === */
 #home-preview {
   position: absolute;
-  top: 100px; /* Push below header */
+  top: 0;
   right: 0;
   width: 70%;
   padding: 0;
@@ -153,7 +151,8 @@ font-style: normal;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
-  z-index: 1;
+  z-index: 0; /* below header */
+  gap: 1rem; 
 }
 
 #home-preview img {
@@ -175,4 +174,12 @@ font-style: normal;
 
 .home-preview.active {
   display: grid;
+}
+
+#olympic-mocks {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+
 }

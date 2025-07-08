@@ -12,9 +12,18 @@ function showProject(id) {
   
     // Update center project title
     const titleMap = {
-      perform: 'Perform—Produce',
-      common: 'Common Dimensions',
-      chair: 'Dis/Assembly Chair',
+      info: 'Info',
+      contact: 'Contact',
+      time: 'Time Changes Everything',
+      olympic: 'Olympic National Park',
+      digital: 'Digital Dilution',
+      moma: 'Chain Reaction',
+      spectra: 'Spectra',
+      frame: 'Out of Frame',
+      revival: 'The Revival',
+      panic: 'Panic Like The House is on Fire',
+      trashify: 'Trashify',
+      deadline: 'Earths Deadline',
     };
   
     const titleElement = document.getElementById('project-title');
