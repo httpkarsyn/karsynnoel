@@ -1,18 +1,23 @@
 /* === Base Styles === */
-body {
-  margin: 0;
-  font-size: 1.4rem;
-  font-family: "area-normal", sans-serif;
-  font-weight: 500;
-  font-style: normal;
-  padding-top: 100px; /* Height of fixed header */
+* {
+  box-sizing: border-box;
+}
 
+html {
+  scroll-behavior: smooth;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
 }
 
 /* === Header === */
 .site-header {
   position: fixed;
-  top: 0;
+  top: 10px;
   left: 0;
   right: 0;
   z-index: 1000;
@@ -22,6 +27,9 @@ body {
   flex-wrap: wrap;
   width: 100%;
   padding: 1rem 2rem;
+  background-color: white;
+  font-family: "area-normal", sans-serif;
+  font-size: 22px;
 }
 
 .header-left {
@@ -30,14 +38,12 @@ body {
   line-height: 1.2;
 }
 
-.header-left h1 {
-  margin: 0;
-  font-size: 1.4rem;
-  font-weight: 400;
-}
 
 .header-left p {
   margin: 0;
+  font-size: 22px;
+  font-weight: 500;
+  font-family: "area-normal", sans-serif;
 }
 
 .header-right {
@@ -45,64 +51,94 @@ body {
   gap: 2rem;
   flex-shrink: 0;
   margin-right: 4rem;
-}
+  margin: 0;
+  font-size: 22px;
+  font-weight: 500;
+  font-family: "area-normal", sans-serif;}
 
 .header-link {
   text-decoration: none;
   color: #000;
-  font-size: 1.4rem;
+  font-size: 22px;
+  font-weight: 500;
+  font-family: "area-normal", sans-serif;
   cursor: pointer;
 }
 
-.header-link:hover {
+.header-link:hover,
+.header-link.active-link {
   text-decoration: underline;
 }
+
+.header-center {
+  position: fixed;
+  top: 30px;
+  left: calc(35% + 2rem); /* Start of right column + padding */
+  font-family: "area-normal", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 22px;
+  line-height: 1.2;
+  white-space: nowrap;
+  pointer-events: none;
+  height: 22px;
+  display: flex;
+  align-items: center;
+}
+
+
+
+
+/* === Home Link === */
 
 #home-link {
   text-decoration: none;
   color: black;
   cursor: pointer;
+  font-size: 22px;
+  font-weight: 700;
+  font-family: "area-normal", sans-serif;
 }
 
 #home-link:hover {
   text-decoration: underline;
 }
 
-.header-center {
-  position: absolute;
-  top: 1.4rem;
-  left: 50%;
-  transform: translateX(-50%);
-    font-family: "Droid Sans Mono", monospace;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 1rem;
-    line-height: 1.2;
-  white-space: nowrap;
-  pointer-events: none;
-}
 
 /* === Layout === */
 .main-layout {
   display: flex;
-  height: calc(100vh - 100px); /* Adjusted for header height */
+  height: calc(100vh - 100px); /* below header */
+  margin-top: 100px; /* offset header */
+  overflow: hidden;
+}
+
+.left-column,
+.right-column {
+  height: 100%;
+  overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  padding: 2rem;
+}
+
+.left-column::-webkit-scrollbar,
+.right-column::-webkit-scrollbar {
+  display: none;
 }
 
 .left-column {
-  width: 30%;
-  background-color: #fff;
-  padding: 2rem;
-  overflow-y: hidden;
+  width: 35%;
   font-family: "area-normal", sans-serif;
-font-weight: 800;
-font-style: normal;
-font-size: 1.4rem;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 22px;
 }
 
+
 .right-column {
-  flex: 1;
-  padding: 2rem;
-  overflow-y: hidden;
+  width: 65%;
+  font-size: 1rem; 
 }
 
 /* === Project Links === */
@@ -115,16 +151,23 @@ font-size: 1.4rem;
   font-family: "area-normal", sans-serif;
   font-weight: 500;
   font-style: normal;
-  font-size: 1.4rem;
+  font-size: 22px;
+  line-height: 26px;
 }
 
-.project-link:hover {
+.project-link:hover,
+.project-link.active-link {
   text-decoration: underline;
+  font-weight: 600;
 }
 
-/* === Project Content Toggle === */
+/* === Project Content === */
 .project-content {
   display: none;
+  font-family: "area-normal", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  left: 46%;
 }
 
 .project-content.active {
@@ -138,21 +181,22 @@ font-size: 1.4rem;
   font-style: normal;
   font-size: 1rem;
   line-height: 1.5;
+  left: 46%;
 }
 
 /* === Home Preview Images === */
 #home-preview {
-  position: absolute;
+  position: relative;
   top: 0;
   right: 0;
-  width: 70%;
+  width: 100%;
   padding: 0;
   margin: 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
-  z-index: 0; /* below header */
-  gap: 1rem; 
+  gap: 1rem;
+  z-index: 0;
 }
 
 #home-preview img {
@@ -176,10 +220,42 @@ font-size: 1.4rem;
   display: grid;
 }
 
-#olympic-mocks {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  display: block;
 
+.project-content img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1.5rem 0;
+  object-fit: contain;
+}
+
+.project-img {
+  width: 100%;
+  max-width: 100px;
+  height: auto;
+  margin: 1.5rem 0;
+}
+
+/* Side-by-side half-widths */
+.first-digital-half-right-img,
+.first-digital-half-left-img {
+  width: 49%;
+}
+
+.first-digital-half-left-img {
+  float: left;
+  margin-right: 2%;
+}
+
+.first-digital-half-right-img {
+  float: right;
+  margin-left: 2%;
+}
+
+.project-video {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: 120%;
+  margin: 1.5rem 0;
 }

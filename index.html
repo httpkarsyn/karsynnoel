@@ -10,8 +10,8 @@
 <body>
   <header class="site-header">
     <div class="header-left">
-      <h1><a href="#" id="home-link">Karsyn Cardoza</a></h1>
-      <p>Designer</p>
+      <a href="#" id="home-link" onclick="showHome()">Karsyn Cardoza</a>
+      <p><em>Designer</em></p>
     </div>
     <div class="header-center" id="project-title"><p></p></div>
     <div class="header-right">
@@ -23,7 +23,7 @@
 
   <div class="main-layout">
     <div class="left-column">
-      <h3>Self-Directed</h3>
+      <h3>Selected Work</h3>
       <a class="project-link" onclick="showProject('time')">Time Changes Everything</a>
       <a class="project-link" onclick="showProject('olympic')">Olympic National Park</a>
       <a class="project-link" onclick="showProject('digital')">Digital Dilution</a>
@@ -44,13 +44,17 @@
       </div>
 
       <div id="info" class="project-content">
-        <h2>Info</h2>
-        <p>This is your bio, contact info, CV, or anything else you want to include.</p>
+        <p>I’m a designer based in Brooklyn, originally from Austin, Texas. I studied Communication Design at Parsons School of Design and previously at Texas State University. My work spans branding, editorial, and user experience design—with a focus on the small, intentional details that shape how things feel. I also code and edit video, which allows me to bring ideas to life across both digital and physical spaces.<br>
+          <br>
+          I come from a creative background that’s always been hands-on. Before design, I worked as a hairdresser, where I learned how to observe closely, listen well, and create with care. That experience led me into photography and production, where I worked on photo and video shoots as <br>
+          a freelance PA. I later moved into marketing, where I gained a deeper understanding of strategy, audience, and the way language and visuals work together to communicate clearly.<br>
+          <br>
+          Now, my practice is rooted in systems thinking, emotional clarity, and a strong sense of rhythm—whether I’m designing a publication, building out a user flow, or making something tactile. I care deeply about how people move through things, and I’m always looking for ways to make that experience feel intentional, human, and a little unexpected.</p>
       </div>
 
       <div id="contact" class="project-content">
         <h2>Contact</h2>
-        <p>Feel free to reach out for collaborations, commissions, or just to say hi ✨</p>
+        <p>Feel free to reach out for collaborations, commissions, or just to say hi </p>
         <p><strong>Email:</strong> <a href="mailto:yourname@email.com">yourname@email.com</a></p>
         <p><strong>Instagram:</strong> <a href="https://instagram.com/yourhandle" target="_blank">@yourhandle</a></p>
       </div>
@@ -64,9 +68,17 @@
       </div>
 
       <div id="olympic" class="project-content">
-        <h2>Olympc National Park</h2>
+        <video class="project-video" controls autoplay muted loop>
+          <source src="media/olympic national park /olympic_national_park_bookmock_final .mp4" type="video/mp4" />
+        </video>
+        <h2>Olympic National Park</h2>
         <p><em>Promotional series</em></p>
         <p>Olympic National Park is a promotional series celebrating the park’s unique atmosphere. Inspired by its dreamlike quality — the white skies, heavy fog, and disorienting sense of scale, this series brings this feeling directly to the viewer’s experience. With the use of black-and-white risograph photography enhancing the park’s sense of mystery. The publication omits folios, paired with intentionally chaotic typography, to create an unpredictable reading experience that mirrors the park’s quick changing scenery. The project aims to spark curiosity and encourage visitors to unplug and experience the park for themselves.</p>   
+        <img src="media/olympic national park /olympic_book_m1.png" class="project-img" alt="olympic" />
+        <img src="media/olympic national park /olympic_book_m2.png" class="project-img" alt="olympic" />
+        <img src="media/olympic national park /olympic_book_m3.png" class="project-img" alt="olympic" />
+        <img src="media/olympic national park /olympic_book_m4.png" class="project-img" alt="olympic" />
+   
       </div>   
 
       <div id="digital" class="project-content">
@@ -77,6 +89,16 @@
           time, memory, and identity. Through imagery and text,
           the collection examines how the ease and speed of digital technology has distanced us from fully experiencing the moment. It reflects on the emotional and personal disconnection that has emerged in the shift to a more fragmented, fleeting digital culture.
         </p>
+        <img src="media/dd mockups/Dig.jpeg" class="project-img" alt="digital-img" />
+        <img src="media/dd mockups/dd_mockcovers.png" class="project-img" alt="digital-img" />
+        <video class="project-video" controls autoplay muted loop>
+          <source src="media/dd mockups/analog book sides(1).mov" type="video/mp4" />
+        </video>
+        <img src="media/dd mockups/dd analog print cards.jpg" class="project-img" alt="digital-img" />
+        <video class="project-video" controls autoplay muted loop>
+          <source src="media/dd mockups/digital book sides.mov" type="video/mp4" />
+        </video>
+
       </div>
       <div id="moma" class="project-content">
         <h2>Chain Reaction</h2>
