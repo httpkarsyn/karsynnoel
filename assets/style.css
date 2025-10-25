@@ -38,7 +38,6 @@ html, body {
   line-height: 1.2;
 }
 
-
 .header-left p {
   margin: 0;
   font-size: 22px;
@@ -50,11 +49,10 @@ html, body {
   display: flex;
   gap: 2rem;
   flex-shrink: 0;
-  margin-right: 4rem;
-  margin: 0;
   font-size: 22px;
   font-weight: 500;
-  font-family: "area-normal", sans-serif;}
+  font-family: "area-normal", sans-serif;
+}
 
 .header-link {
   text-decoration: none;
@@ -67,13 +65,13 @@ html, body {
 
 .header-link:hover,
 .header-link.active-link {
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 .header-center {
   position: fixed;
   top: 30px;
-  left: calc(35% + 2rem); /* Start of right column + padding */
+  left: calc(35% + 2rem);
   font-family: "area-normal", sans-serif;
   font-weight: 500;
   font-style: normal;
@@ -86,11 +84,7 @@ html, body {
   align-items: center;
 }
 
-
-
-
 /* === Home Link === */
-
 #home-link {
   text-decoration: none;
   color: black;
@@ -104,12 +98,11 @@ html, body {
   text-decoration: underline;
 }
 
-
 /* === Layout === */
 .main-layout {
   display: flex;
-  height: calc(100vh - 100px); /* below header */
-  margin-top: 100px; /* offset header */
+  height: calc(100vh - 100px);
+  margin-top: 100px;
   overflow: hidden;
 }
 
@@ -134,7 +127,6 @@ html, body {
   font-style: normal;
   font-size: 22px;
 }
-
 
 .right-column {
   width: 65%;
@@ -167,7 +159,6 @@ html, body {
   font-family: "area-normal", sans-serif;
   font-weight: 500;
   font-style: normal;
-  left: 46%;
 }
 
 .project-content.active {
@@ -181,7 +172,6 @@ html, body {
   font-style: normal;
   font-size: 1rem;
   line-height: 1.5;
-  left: 46%;
 }
 
 /* === Home Preview Images === */
@@ -206,21 +196,7 @@ html, body {
   display: block;
 }
 
-.home-preview {
-  display: none;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 0;
-}
-
-.home-preview.active {
-  display: grid;
-}
-
-
+/* === Project Images === */
 .project-content img {
   display: block;
   max-width: 100%;
@@ -231,7 +207,7 @@ html, body {
 
 .project-img {
   width: 100%;
-  max-width: 100px;
+  max-width: 100%;
   height: auto;
   margin: 1.5rem 0;
 }
@@ -252,10 +228,11 @@ html, body {
   margin-left: 2%;
 }
 
+/* === Project Videos === */
 .project-video {
   display: block;
   width: 100%;
   max-width: 100%;
-  height: 120%;
+  height: auto;
   margin: 1.5rem 0;
 }

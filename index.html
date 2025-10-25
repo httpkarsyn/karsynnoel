@@ -10,13 +10,13 @@
 <body>
   <header class="site-header">
     <div class="header-left">
-      <a href="#" id="home-link" onclick="showHome()">Karsyn Cardoza</a>
+      <a href="#" id="home-link">Karsyn Cardoza</a>
       <p><em>Designer</em></p>
     </div>
     <div class="header-center" id="project-title"><p></p></div>
     <div class="header-right">
-      <a href="#info" class="header-link" onclick="showProject('info')">Info</a>
-      <a href="#contact" class="header-link" onclick="showProject('contact')">Contact</a>
+      <a href="#info" class="header-link" data-project="info">Info</a>
+      <a href="#contact" class="header-link" data-project="contact">Contact</a>
       <a href="#follow" class="header-link">Follow</a>
     </div>
   </header>
@@ -24,57 +24,57 @@
   <div class="main-layout">
     <div class="left-column">
       <h3>Selected Work</h3>
-      <a class="project-link" onclick="showProject('intense')">The Intensity of Being</a>
-      <a class="project-link" onclick="showProject('time')">Time Changes Everything</a>
-      <a class="project-link" onclick="showProject('olympic')">Olympic National Park</a>
-      <a class="project-link" onclick="showProject('digital')">Digital Dilution</a>
-      <a class="project-link" onclick="showProject('moma')">Chain Reaction</a>
-      <a class="project-link" onclick="showProject('spectra')">Spectra</a>
-      <a class="project-link" onclick="showProject('frame')">Out of Frame</a>
-      <a class="project-link" onclick="showProject('revival')">The Revival</a>
-      <a class="project-link" onclick="showProject('panic')">I want you to panic</a>
-      <a class="project-link" onclick="showProject('deadline')">Earths Deadline</a>
+      <a class="project-link" data-project="intense" href="#intense">The Intensity of Being</a>
+      <a class="project-link" data-project="time" href="#time">Time Changes Everything</a>
+      <a class="project-link" data-project="olympic" href="#olympic">Olympic National Park</a>
+      <a class="project-link" data-project="digital" href="#digital">Digital Dilution</a>
+      <a class="project-link" data-project="moma" href="#moma">Chain Reaction</a>
+      <a class="project-link" data-project="frame" href="#frame">Out of Frame</a>
+      <a class="project-link" data-project="revival" href="#revival">The Revival</a>
+      <a class="project-link" data-project="panic" href="#panic">I want you to panic</a>
+      <a class="project-link" data-project="deadline" href="#deadline">Earths Deadline</a>
     </div>
 
     <div class="right-column">
       <div id="home-preview">
-        <img src="media/olympic national park /olympic_book_m3.png" alt="Preview 1" />
-        <img src="media/olympic national park /olympic_book_m4.png" alt="Preview 2" />
-        <img src="media/olympic national park /olympic_book_m1.png" alt="Preview 3" />
+        <img src="media/olympic national park /olympic_book_m3.png" alt="Olympic National Park Book Cover" />
+        <img src="media/olympic national park /olympic_book_m4.png" alt="Olympic National Park Interior Page" />
+        <img src="media/olympic national park /olympic_book_m1.png" alt="Olympic National Park Book Spread" />
       </div>
 
       <div id="info" class="project-content">
-        <p>I’m a designer based in Brooklyn, originally from Austin, Texas. I studied Communication Design at Parsons School of Design and previously at Texas State University. My work spans branding, editorial, and user experience design—with a focus on the small, intentional details that shape how things feel. I also code and edit video, which allows me to bring ideas to life across both digital and physical spaces.<br>
+        <p>I'm a designer based in Brooklyn, originally from Austin, Texas. I studied Communication Design at Parsons School of Design and previously at Texas State University. My work spans branding, editorial, and user experience design—with a focus on the small, intentional details that shape how things feel. I also code and edit video, which allows me to bring ideas to life across both digital and physical spaces.<br>
           <br>
-          I come from a creative background that’s always been hands-on. Before design, I worked as a hairdresser, where I learned how to observe closely, listen well, and create with care. That experience led me into photography and production, where I worked on photo and video shoots as <br>
+          I come from a creative background that's always been hands-on. Before design, I worked as a hairdresser, where I learned how to observe closely, listen well, and create with care. That experience led me into photography and production, where I worked on photo and video shoots as <br>
           a freelance PA. I later moved into marketing, where I gained a deeper understanding of strategy, audience, and the way language and visuals work together to communicate clearly.<br>
           <br>
-          Now, my practice is rooted in systems thinking, emotional clarity, and a strong sense of rhythm—whether I’m designing a publication, building out a user flow, or making something tactile. I care deeply about how people move through things, and I’m always looking for ways to make that experience feel intentional, human, and a little unexpected.</p>
+          Now, my practice is rooted in systems thinking, emotional clarity, and a strong sense of rhythm—whether I'm designing a publication, building out a user flow, or making something tactile. I care deeply about how people move through things, and I'm always looking for ways to make that experience feel intentional, human, and a little unexpected.</p>
       </div>
 
       <div id="contact" class="project-content">
         <h2>Contact</h2>
-        <p>Feel free to reach out for collaborations, commissions, or just to say hi </p>
+        <p>Feel free to reach out for collaborations, commissions, or just to say hi</p>
         <p><strong>Email:</strong> <a href="mailto:yourname@email.com">yourname@email.com</a></p>
         <p><strong>Instagram:</strong> <a href="https://instagram.com/yourhandle" target="_blank">@yourhandle</a></p>
       </div>
+
       <div id="intense" class="project-content">
         <video class="project-video" controls autoplay muted loop>
           <source src="media/intensityofbeing/theintensityofbeing_bookscans .mp4" type="video/mp4" />
         </video>
         <h2>The Intensity of Being</h2>
         <p><em>A three-part series exploring the intensity of being a woman.</em></p>
-        <p> The jumper-ring binding and photo treatment create a subtle discomfort to draw viewers into the narrative. Each section includes a written piece by women reflecting their relationship to the topic.</p>
-        <img src="media/intensityofbeing/1.jpg" class="project-img" alt="digital-img" />
+        <p>The jumper-ring binding and photo treatment create a subtle discomfort to draw viewers into the narrative. Each section includes a written piece by women reflecting their relationship to the topic.</p>
+        <img src="media/intensityofbeing/1.jpg" class="project-img" alt="Feminine Curation section" />
         <p>Feminine Curation examines beauty standards, comparing the feminine form to flowers.</p>
-        <img src="media/intensityofbeing/4.jpg" class="project-img" alt="digital-img" />
-        <img src="media/intensityofbeing/5 2.jpg" class="project-img" alt="digital-img" />
-       <p>Traces of Her captures the lingering presence of feminine energy through objects, marks, or a lit space, showing how a woman can be felt even when absent.</p> 
-        <img src="media/intensityofbeing/3.jpg" class="project-img" alt="digital-img" />
-        <img src="media/intensityofbeing/6.jpg" class="project-img" alt="digital-img" />
-        <p>Rotten Desire explores trauma, the dangers women face, and daily struggles, comparing the female form to decaying fruit to highlight the tension between beauty, vulnerability, and harsh realities. </p> 
-        <img src="media/intensityofbeing/2.jpg" class="project-img" alt="digital-img" />
-        <img src="media/intensityofbeing/5.jpg" class="project-img" alt="digital-img" />
+        <img src="media/intensityofbeing/4.jpg" class="project-img" alt="Feminine Curation spread" />
+        <img src="media/intensityofbeing/5 2.jpg" class="project-img" alt="Traces of Her section" />
+        <p>Traces of Her captures the lingering presence of feminine energy through objects, marks, or a lit space, showing how a woman can be felt even when absent.</p> 
+        <img src="media/intensityofbeing/3.jpg" class="project-img" alt="Traces of Her spread" />
+        <img src="media/intensityofbeing/6.jpg" class="project-img" alt="Traces of Her detail" />
+        <p>Rotten Desire explores trauma, the dangers women face, and daily struggles, comparing the female form to decaying fruit to highlight the tension between beauty, vulnerability, and harsh realities.</p> 
+        <img src="media/intensityofbeing/2.jpg" class="project-img" alt="Rotten Desire section" />
+        <img src="media/intensityofbeing/5.jpg" class="project-img" alt="Rotten Desire spread" />
       </div>
 
       <div id="time" class="project-content">
@@ -93,60 +93,43 @@
         </video>
         <h2>Olympic National Park</h2>
         <p><em>Promotional series</em></p>
-        <p>Olympic National Park is a promotional series celebrating the park’s unique atmosphere. Inspired by its dreamlike quality — the white skies, heavy fog, and disorienting sense of scale, this series brings this feeling directly to the viewer’s experience. With the use of black-and-white risograph photography enhancing the park’s sense of mystery. The publication omits folios, paired with intentionally chaotic typography, to create an unpredictable reading experience that mirrors the park’s quick changing scenery. The project aims to spark curiosity and encourage visitors to unplug and experience the park for themselves.</p>   
-   
+        <p>Olympic National Park is a promotional series celebrating the park's unique atmosphere. Inspired by its dreamlike quality — the white skies, heavy fog, and disorienting sense of scale, this series brings this feeling directly to the viewer's experience. With the use of black-and-white risograph photography enhancing the park's sense of mystery. The publication omits folios, paired with intentionally chaotic typography, to create an unpredictable reading experience that mirrors the park's quick changing scenery. The project aims to spark curiosity and encourage visitors to unplug and experience the park for themselves.</p>   
       </div>   
 
       <div id="digital" class="project-content">
-        <img src="media/dd mockups/dd_mockcovers.png" class="project-img" alt="digital-img" />
-      
+        <img src="media/dd mockups/dd_mockcovers.png" class="project-img" alt="Digital Dilution cover mockup" />
         <h2>Digital Dilution</h2>
         <p><em>The Lost Connection with the Moment and Self</em></p>
-        <p>Digital Dilution explores how the transition from analog
-          to digital media has transformed the way we engage with
-          time, memory, and identity. Through imagery and text,
-          the collection examines how the ease and speed of digital technology has distanced us from fully experiencing the moment. It reflects on the emotional and personal disconnection that has emerged in the shift to a more fragmented, fleeting digital culture.
-        </p>
-        <img src="media/dd mockups/Dig.jpeg" class="project-img" alt="digital-img" />
-      
+        <p>Digital Dilution explores how the transition from analog to digital media has transformed the way we engage with time, memory, and identity. Through imagery and text, the collection examines how the ease and speed of digital technology has distanced us from fully experiencing the moment. It reflects on the emotional and personal disconnection that has emerged in the shift to a more fragmented, fleeting digital culture.</p>
+        <img src="media/dd mockups/Dig.jpeg" class="project-img" alt="Digital Dilution analog print" />
         <video class="project-video" controls autoplay muted loop>
           <source src="media/dd mockups/dd_mockup01.mp4" type="video/mp4" />
         </video>
-        <img src="media/dd mockups/dd analog print cards.jpg" class="project-img" alt="digital-img" />
+        <img src="media/dd mockups/dd analog print cards.jpg" class="project-img" alt="Digital Dilution analog print cards" />
         <video class="project-video" controls autoplay muted loop>
           <source src="media/dd mockups/dd_mockup02.mp4" type="video/mp4" />
         </video>
-
+        <video class="project-video" controls autoplay muted loop>
+          <source src="media/dd mockups/digital dilution film compressed.mov" type="video/mp4" />
+        </video>
       </div>
+
       <div id="moma" class="project-content">
         <h2>Chain Reaction</h2>
         <p><em>User Experience | MoMA</em></p>
-        <p>
-        </p>
+        <p>Content coming soon.</p>
       </div>
-      <div id="spectra" class="project-content">
-        <h2>Spectra</h2>
-        <p><em>Cenimatic color study</em></p>
-        <p>
-        </p>
-      </div>
+     
       <div id="frame" class="project-content">
         <h2>Out of Frame</h2>
-        <p><em>Study of intamicy behind photo booths</em></p>
-        <p>A study that focuses on the intimacy of photo booths
-          and how a simple curtain draws a boundary between the outside world and individual private moments. Through
-          a collection of photos focusing solely on the bottom half
-          of people inside the booths,  I emphasize how even a
-          brief act of pulling the curtain creates a profound sense of security and personal space.
-          
-        </p>
+        <p><em>Study of intimacy behind photo booths</em></p>
+        <p>A study that focuses on the intimacy of photo booths and how a simple curtain draws a boundary between the outside world and individual private moments. Through a collection of photos focusing solely on the bottom half of people inside the booths, I emphasize how even a brief act of pulling the curtain creates a profound sense of security and personal space.</p>
       </div>
 
       <div id="revival" class="project-content">
         <h2>The Revival</h2>
         <p><em>The shift of the cowboy</em></p>
-        <p>An editorial piecce that captures the resurgence of Western culture as the younger generations reimagine its traditions with fresh creativity. Through bold visuals and stories, it highlights how cowboy culture, y'allternative fashion, and modern country music blend authenticity with innovation. This project celebrates the enduring spirit of the West, alive and thriving in a new era. 
-        </p>
+        <p>An editorial piece that captures the resurgence of Western culture as the younger generations reimagine its traditions with fresh creativity. Through bold visuals and stories, it highlights how cowboy culture, y'allternative fashion, and modern country music blend authenticity with innovation. This project celebrates the enduring spirit of the West, alive and thriving in a new era.</p>
       </div>
 
       <div id="panic" class="project-content">
@@ -155,19 +138,16 @@
         </video>
         <h2>I want you to panic</h2>
         <p><em>Stories as Networks</em></p>
-        <p>
-          A non-interactive web piece inspired by Greta Thunberg’s speech, <em> Panic Like The House is on Fire</em>. Designed to mimic the format of end credits in a film, the site evokes the quiet grief that follows the end of something beautiful. There’s no option to scroll backwards, mirroring the irreversible damage we've done to the planet. The experience is meant to be linear, somber, and final.
-        </p>
+        <p>A non-interactive web piece inspired by Greta Thunberg's speech, <em>Panic Like The House is on Fire</em>. Designed to mimic the format of end credits in a film, the site evokes the quiet grief that follows the end of something beautiful. There's no option to scroll backwards, mirroring the irreversible damage we've done to the planet. The experience is meant to be linear, somber, and final.</p>
       </div>
 
       <div id="deadline" class="project-content">
         <h2>Earths Deadline</h2>
         <p><em>Documentary</em></p>
-        <p>
-        </p>
+        <p>Content coming soon.</p>
       </div>
     </div>
-
+  </div>
 
   <script src="assets/script.js"></script>
 </body>
