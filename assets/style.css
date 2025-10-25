@@ -67,7 +67,7 @@ html, body {
 
 .header-link:hover,
 .header-link.active-link {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .header-center {

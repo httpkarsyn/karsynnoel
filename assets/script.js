@@ -36,6 +36,7 @@ function showProject(id) {
   
     // Update center project title
     const titleMap = {
+      intense: 'The Intensity of Being',
       time: 'Time Changes Everything',
       olympic: 'Olympic National Park',
       digital: 'Digital Dilution',
