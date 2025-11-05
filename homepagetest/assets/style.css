@@ -1,121 +1,193 @@
-@import "normalize.css";
+/* ===============================
+   KARSYN PORTFOLIO — TWO-COLUMN GRID (THINNER LEFT RAIL)
+   =============================== */
 
-@font-face {
-  font-family: "Geist Sans";
-  src: url("https://assets.codepen.io/605876/GeistVF.ttf") format("truetype");
-}
-
-*,
-*:after,
-*:before {
-	box-sizing: border-box;
-}
-
-body {
-	min-height: 100vh;
-	font-family:  "Geist Sans", "SF Pro Text", "SF Pro Icons", "AOS Icons", "Helvetica Neue", Helvetica, Arial, sans-serif, system-ui;
-	font-weight: 140;
+   :root{
+    /* layout */
+    --rail-w: 160px;          /* thinner left info column */
+    --gutter: 10px;           /* slightly more space between projects */
+    --stage-pad: 36px;        /* more room on right side */
   
-  &::-webkit-scrollbar {
-    display: none;
-  }
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
-}
-
-.section {
-  width: 100vw;
+    /* image ratio controls */
+    --ratio-default: 16/9;    
+    --ratio-wide: 3/2;        
+    --ratio-square: 1/1;      
+    --ratio-tall: 4/5;        
   
-  &.-a {
-    font-size: 6vw;
-    height: 100vh;
-    background-color: #CCFF66;
+    /* colors */
+    --bg: #ffffff;
+    --ink: #000000;
+  
+    /* type */
+    --cap: 12.5px;
   }
-  &.-b {
-    color: #001514;
-    height: 500vh;
-    position: relative;
-    background-color: #4E6E58;
+  
+  /* base */
+  *{ box-sizing: border-box; }
+  html,body{ height:100%; margin:0; }
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
   }
-  &.-c {
-    font-size: 2vw;
-    font-weight: 100;
-    height: 100vh;
-    color: #fff;
-    background-color: #001514;
-    
-    a {
-      font-size: 16px;
-      opacity: .3;
-      color: #fff;
-      display: block;
-    }
-  }
-  &__horizon {
-    top: 0;
-    position: sticky;
-    width: 100%;
-    height: 100vh;
-    white-space: nowrap;
-    overflow-x: auto;
-    overflow-y: hidden;
-    display: flex;
-    
-    &::-webkit-scrollbar {
-      height: 10px;
-    }
-    &::-webkit-scrollbar-track {
-      background: #CCFF66;
-    }
-    &::-webkit-scrollbar-thumb {
-      background: #000;
-    }
-    
-    &-block {
-      width: 100vw;
-      flex: 0 0 auto;
-      left: 0;
-      position: sticky;
-      
-      > div {
-        width: 100%;
-        height: 100%;
-        font-size: 6vw;
-        display:flex;
-        align-items: center;
-        justify-content: center;
-      }
-      
-      > span {
-        font-size: 4vw;
-        writing-mode: vertical-lr;
-        padding: 1vw;
-      }
-      
-      &:nth-child(2) {
-        left: 10vw;
-        background-color: #BCAA99;
-      }
-      &:nth-child(3) {
-        left: 20vw;
-        background-color: #645986;
-      }
-      &:nth-child(4) {
-        left: 30vw;
-        background-color: #BCAA99
-      }
-      &:nth-child(5) {
-        background-color: #CCFF66
-      }
-    }
-  }
-  &__text {
-    width: 100%;
-    height: 100%;
+  figure{ margin:0; }
+  
+  /* ===============================
+     LEFT RAIL
+     =============================== */
+  .rail{
+    position:fixed;
+    inset:0 auto 0 0;
+    width:var(--rail-w);
+    padding:20px 14px;
     display:flex;
-    align-items: center;
-    justify-content: center;    
-    flex-direction: column;
-    gap: .5rem;
+    flex-direction:column;
+    justify-content:space-between;
+    background:var(--bg);
   }
-}
+  
+  .rail__kicker{
+    font-size:11px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--ink);
+    margin-bottom:8px;
+  }
+  
+  .rail__desc{
+    font-size:13.5px;
+    line-height:1.35;
+    font-weight:400;
+    color:var(--ink);
+    margin:0 0 12px;
+  }
+  
+  .rail__nav{ display:grid; gap:4px; }
+  
+  .rail__label{
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:.12em;
+    color:var(--ink);
+    margin-bottom:6px;
+  }
+  
+  .rail__link{
+    display:inline-block;
+    width:fit-content;
+    font-size:11.5px;
+    font-variant:all-small-caps;
+    letter-spacing:.08em;
+    color:var(--ink);
+    text-decoration:none;
+    text-transform:lowercase;
+  }
+  .rail__link:hover{ opacity:.6; }
+  
+  .rail__bottom{
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+  }
+  
+  /* ===============================
+     RIGHT STAGE
+     =============================== */
+  .stage{
+    margin-left:var(--rail-w);
+    padding:var(--stage-pad);
+  }
+  
+  /* two-column masonry layout */
+  .masonry{
+    columns:2;
+    column-gap:var(--gutter);
+  }
+  
+  /* ===============================
+     CARDS + RATIO CROPPING
+     =============================== */
+  .card{
+    break-inside:avoid;
+    margin:0 0 var(--gutter);
+  }
+  
+  .media{
+    width:100%;
+    aspect-ratio: var(--ratio-default);
+    overflow:hidden;
+    background:transparent;
+  }
+  
+  .card--wide .media   { aspect-ratio: var(--ratio-wide); }
+  .card--square .media { aspect-ratio: var(--ratio-square); }
+  .card--tall .media   { aspect-ratio: var(--ratio-tall); }
+  
+  .media img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    border-radius:0;
+    box-shadow:none;
+    transition:none;
+  }
+  
+  .card__cap{
+    margin-top:6px;
+    font-size:var(--cap);
+    line-height:1.35;
+    color:var(--ink);
+  }
+  .card__title{
+    font-weight:600;
+    letter-spacing:.01em;
+    color:var(--ink);
+  }
+  .card__meta,
+  .card__sub{
+    color:var(--ink);
+  }
+  
+  /* ===============================
+     BACK TO TOP
+     =============================== */
+  .backtop{
+    text-align:center;
+    padding:40px 0 20px;
+  }
+  .backtop__link{
+    font-size:11px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--ink);
+    text-decoration:none;
+  }
+  .backtop__link:hover{ opacity:.6; }
+  
+  /* ===============================
+     RESPONSIVE
+     =============================== */
+  @media (max-width:860px){
+    .rail{
+      position:sticky;
+      top:0;
+      width:100%;
+      padding:14px 12px;
+    }
+    .stage{
+      margin-left:0;
+      padding:12px;
+    }
+    .masonry{
+      columns:1;
+      column-gap:6px;
+    }
+  }
+  
+  @media (prefers-reduced-motion:reduce){
+    *{ transition:none !important; }
+  }
+  

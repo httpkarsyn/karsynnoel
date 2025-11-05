@@ -1,31 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Karsyn Cardoza</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>karsyn — portfolio</title>
+
+  <!-- Inter -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
   <link rel="stylesheet" href="assets/style.css" />
-  <link rel="stylesheet" href="https://use.typekit.net/pja8ouo.css">
 </head>
-<body>
-    <section class="section -a">
-    <div class="section__text">👇 SCROLL DOWN 👇</div>
-  </section>
-  <section class="section -b -horizon">
-    <div class="section__horizon">
-      <div class="section__horizon-block"><span>HORIZONTAL 👉</span></div>
-      <div class="section__horizon-block"><span>HORIZONTAL 🥰</span></div>
-      <div class="section__horizon-block"><span>HORIZONTAL 😘</span></div>
-      <div class="section__horizon-block"><span>HORIZONTAL 🎉</span></div>
-      <div class="section__horizon-block"><div>🏄 OH YA BABY 🏄</div></div>
+<body id="top">
+
+  <!-- LEFT: THIN INFO COLUMN -->
+  <aside class="rail">
+    <div class="rail__top">
+      <div class="rail__kicker">info&nbsp;&nbsp;[p.p.*]</div>
+      <p class="rail__desc">
+        Karsyn Cardoza is a graphic designer based in nyc. works in editorial design, web, and brand identity.
+      </p>
+
+      <nav class="rail__nav">
+        <a class="rail__link" href="#" aria-label="instagram">instagram</a>
+        <a class="rail__link" href="#" aria-label="linkedin">linkedin</a>
+      </nav>
     </div>
-  </section>
-  <section class="section -c">
-    <div class="section__text">
-      ES Design Loves Egg<br>
-      <a href="https://e-s.tw">Made by ES Design</a>
+
+    <div class="rail__bottom">
+      <div class="rail__label">contact</div>
+      <a class="rail__link" href="mailto:hello@example.com">email</a>
+      <a class="rail__link" href="#" rel="noopener">telegram</a>
     </div>
-  </section>
+  </aside>
+
+  <!-- RIGHT: WORK GRID -->
+  <main class="stage">
+    <section class="masonry" id="grid">
+      <!-- Project card (default WIDE ratio) -->
+      <figure class="card">
+        <div class="media">
+          <!-- NOTE: avoid spaces in file/folder names if possible -->
+          <img src="media copy/intensityofbeing/4.jpg" alt="The Intensity of Being — still" loading="lazy">
+        </div>
+        <figcaption class="card__cap">
+          <div class="card__title">The Intensity of Being</div>
+          <div class="card__meta">a three part series</div>
+        </figcaption>
+      </figure>
+
+      <figure class="card">
+        <div class="media">
+          <img src="media copy/olympic national park /olympic_book_m1.png" alt="poster wall" loading="lazy">
+        </div>
+        <figcaption class="card__cap">
+          <div class="card__title">Olympic National Park</div>
+          <div class="card__meta">unesco site</div>
+        </figcaption>
+      </figure>
+
+      <figure class="card">
+        <div class="media">
+          <img src="media copy/dd mockups/dd mockup_12.jpg" alt="editorial spread" loading="lazy">
+        </div>
+        <figcaption class="card__cap">
+          <div class="card__title">uu photostudio</div>
+          <div class="card__meta">advent calendar — 2024</div>
+        </figcaption>
+      </figure>
+
+      <figure class="card">
+        <div class="media">
+          <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?q=80&w=1600&auto=format&fit=crop" alt="signage system" loading="lazy">
+        </div>
+        <figcaption class="card__cap">
+          <div class="card__title">annki studio</div>
+          <div class="card__meta">brand guardianship — current</div>
+        </figcaption>
+      </figure>
+
+      <!-- EXAMPLES: use these modifiers when you need a different crop -->
+      <!-- <figure class="card card--wide">... (3/2) ...</figure> -->
+      <!-- <figure class="card card--square">... (1/1) ...</figure> -->
+      <!-- <figure class="card card--tall">... (4/5) ...</figure> -->
+    </section>
+
+    <div class="backtop">
+      <a href="#top" id="goUp" class="backtop__link">go up</a>
+    </div>
+  </main>
+
   <script src="assets/script.js"></script>
 </body>
 </html>

@@ -1,17 +1,18 @@
-function getProgress(element) {
-    var rect = element.getBoundingClientRect();
-    var html = document.documentElement;
-    let progress = - (rect.top / (element.clientHeight - window.innerHeight))
-    if (progress <= 0) {
-      progress = 0
-    } else if (progress >= 1){
-      progress = 1
-    }
-    return progress
+// smooth “go up” scroll + image fade-in
+document.addEventListener("DOMContentLoaded", () => {
+  const goUp = document.getElementById("goUp");
+  if (goUp) {
+    goUp.addEventListener("click", (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
   }
-  
-  document.querySelectorAll('.section.-horizon').forEach((horizon) => {
-    window.addEventListener('scroll', () => {
-      horizon.children[0].scrollLeft = getProgress(horizon) * window.innerWidth * 4;
-    })
-  })
+
+  const imgs = document.querySelectorAll(".card img");
+  imgs.forEach((img) => {
+    img.style.opacity = "0";
+    img.style.transition = "opacity .4s ease";
+    if (img.complete) img.style.opacity = "1";
+    img.addEventListener("load", () => (img.style.opacity = "1"));
+  });
+});
