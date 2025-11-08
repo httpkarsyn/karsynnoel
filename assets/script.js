@@ -1,200 +1,138 @@
-// Project title mapping
-const PROJECT_TITLES = {
-  intense: 'The Intensity of Being',
-  time: 'Time Changes Everything',
-  olympic: 'Olympic National Park',
-  digital: 'Digital Dilution',
-  moma: 'Chain Reaction',
-  frame: 'Out of Frame',
-  revival: 'The Revival',
-  panic: 'I want you to panic',
-  deadline: 'Earths Deadline',
-  info: 'Info',
-  contact: 'Contact'
-};
+(() => {
+  'use strict';
 
-// Initialize when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
-  
-  // Handle all project links
-  document.querySelectorAll('.project-link').forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      const projectId = link.getAttribute('data-project');
-      showProject(projectId);
-    });
-  });
+  const list        = document.querySelector('.project-list');
+  const nameBlock   = document.querySelector('.name');
 
-  // Handle header links
-  document.querySelectorAll('.header-link').forEach(link => {
-    link.addEventListener('click', (e) => {
-      const projectId = link.getAttribute('data-project');
-      if (projectId) {
-        e.preventDefault();
-        showProject(projectId);
-      }
-    });
-  });
+  // LEFT
+  const panel       = document.querySelector('.preview-panel');
+  const imgEl       = panel?.querySelector('.preview-img');
+  const captionLeft = panel?.querySelector('.caption-left');
+  const moreLink    = panel?.querySelector('.more-link');
+  const closeLink   = panel?.querySelector('.close-link');
 
-  // Handle home link
-  const homeLink = document.getElementById('home-link');
-  if (homeLink) {
-    homeLink.addEventListener('click', (e) => {
-      e.preventDefault();
-      showHome();
-    });
+  // RIGHT
+  const detail      = document.querySelector('.detail-panel');
+  const detailClose = detail?.querySelector('.detail-close');
+  const detailCredit= detail?.querySelector('.detail-credit');
+  const detailGrid  = detail?.querySelector('.detail-grid');
+
+  if (!panel || !imgEl || !captionLeft || !detail || !detailCredit || !detailGrid) return;
+
+  // carousel state
+  let images = [];
+  let index = 0;
+  let autoTimer = null;
+  let currentKey = '';
+  const AUTO_MS = 2200;
+
+  /* ---------------- helpers ---------------- */
+  function qs(sel, root = document) { return root.querySelector(sel); }
+  function getTemplate(id) {
+    const t = document.getElementById(id);
+    return t && 'content' in t ? t.content.cloneNode(true) : null;
   }
+  function stopAuto(){ if (autoTimer) clearInterval(autoTimer); autoTimer = null; }
+  function startAuto(){ stopAuto(); if (images.length > 1) autoTimer = setInterval(()=>setImage(index+1), AUTO_MS); }
+  function setImage(i){ if (!images.length) return; index = (i + images.length) % images.length; imgEl.src = images[index]; }
 
-  // Handle browser back/forward
-  window.addEventListener('popstate', (e) => {
-    if (e.state && e.state.project) {
-      showProject(e.state.project, false);
+  function openPreviewFor(el){
+    const key = el.getAttribute('data-key') || '';
+    const urls = (el.getAttribute('data-images') || '').split(',').map(s=>s.trim()).filter(Boolean);
+    if (!key || !urls.length) return;
+
+    currentKey = key;
+    images = urls;
+    index = 0;
+    setImage(0);
+
+    // apply left caption from template
+    const leftTpl = getTemplate(`${key}-left`);
+    if (leftTpl) {
+      const left = qs('.caption-left', leftTpl) || leftTpl;
+      captionLeft.innerHTML = left.innerHTML;
     } else {
-      showHome(false);
+      captionLeft.innerHTML = `<p class="caption-title">${el.textContent.trim()}</p>`;
     }
-  });
 
-  // Show initial view based on URL hash
-  const hash = window.location.hash.substring(1);
-  if (hash && document.getElementById(hash)) {
-    showProject(hash, false);
+    panel.classList.add('show');
+    startAuto();
   }
 
-  // Setup scroll listener for video autoplay
-  setupVideoAutoplay();
+  function openDetailForKey(key){
+    const rightTpl = getTemplate(`${key}-right`);
+    if (!rightTpl) { detail.classList.add('show'); return; }
+
+    // credit (from template's .detail-credit)
+    const creditEl = qs('.detail-credit', rightTpl);
+    if (creditEl) detailCredit.innerHTML = creditEl.innerHTML;
+
+    // grid content: collect .detail-text and .media from the template
+    const scratch = document.createElement('div');
+    scratch.appendChild(rightTpl);
+    const pieces = scratch.querySelectorAll('.detail-text, .media');
+    detailGrid.innerHTML = '';
+    pieces.forEach(node => detailGrid.appendChild(node));
+
+    detail.classList.add('show');
+  }
+
+  function closeAll(){
+    panel.classList.remove('show');
+    detail.classList.remove('show');
+    stopAuto();
+    currentKey = '';
+  }
+
+  /* --------------- interactions --------------- */
+
+  // click a project (left opens; right via More)
+  list?.addEventListener('click', (e)=>{
+    const el = e.target.closest('li[data-key]');
+    if (!el) return;
+    e.preventDefault();
+
+    const key = el.getAttribute('data-key');
+    if (panel.classList.contains('show') && key === currentKey) {
+      // toggle close if same item
+      closeAll();
+      return;
+    }
+    openPreviewFor(el);
+  });
+
+  // click name: open BOTH left + right with "about" templates
+  nameBlock?.addEventListener('click', ()=>{
+    openPreviewFor(nameBlock);
+    openDetailForKey('about');
+  });
+
+  // More: open right for the current key
+  moreLink?.addEventListener('click', (e)=>{
+    e.preventDefault();
+    if (!currentKey) return;
+    openDetailForKey(currentKey);
+  });
+
+  // Close buttons: close both panels
+  closeLink?.addEventListener('click', (e)=>{ e.preventDefault(); closeAll(); });
+  detailClose?.addEventListener('click', (e)=>{ e.preventDefault(); closeAll(); });
+
+  // Esc closes both
+  window.addEventListener('keydown', (e)=>{ if (e.key === 'Escape') closeAll(); });
+  // clicking anywhere on the page closes both panels (except on interactive elements)
+document.addEventListener('click', (e) => {
+  const target = e.target;
+
+  // don't trigger close if user clicks inside either panel or on a project/name link
+  const insidePreview = panel.contains(target);
+  const insideDetail = detail.contains(target);
+  const clickedLink = target.closest('a, li[data-key], .name');
+
+  if (insidePreview || insideDetail || clickedLink) return;
+
+  // otherwise close everything
+  closeAll();
 });
 
-function setupVideoAutoplay() {
-  const rightColumn = document.querySelector('.right-column');
-  if (!rightColumn) return;
-
-  rightColumn.addEventListener('scroll', () => {
-    checkVideosInView();
-  });
-}
-
-function checkVideosInView() {
-  const rightColumn = document.querySelector('.right-column');
-  if (!rightColumn) return;
-
-  const videos = document.querySelectorAll('.project-content.active .project-video');
-  
-  videos.forEach(video => {
-    const rect = video.getBoundingClientRect();
-    const columnRect = rightColumn.getBoundingClientRect();
-    
-    // Check if video is in viewport
-    const isInView = (
-      rect.top >= columnRect.top &&
-      rect.bottom <= columnRect.bottom
-    ) || (
-      rect.top < columnRect.top + columnRect.height / 2 &&
-      rect.bottom > columnRect.top + columnRect.height / 2
-    );
-    
-    if (isInView && video.paused) {
-      video.play().catch(err => console.log('Play prevented:', err));
-    } else if (!isInView && !video.paused) {
-      video.pause();
-    }
-  });
-}
-
-function showHome(updateHistory = true) {
-  // Pause and reset all videos
-  document.querySelectorAll('.project-video').forEach(video => {
-    video.pause();
-    video.currentTime = 0;
-  });
-
-  // Hide all projects
-  document.querySelectorAll('.project-content').forEach(content => {
-    content.classList.remove('active');
-  });
-
-  // Clear title
-  const titleElement = document.getElementById('project-title');
-  if (titleElement) {
-    titleElement.innerHTML = '';
-  }
-
-  // Show home preview
-  const homePreview = document.getElementById('home-preview');
-  if (homePreview) {
-    homePreview.style.display = 'flex';
-  }
-
-  // Remove active states
-  document.querySelectorAll('.project-link, .header-link').forEach(link => {
-    link.classList.remove('active-link');
-  });
-
-  // Update URL
-  if (updateHistory) {
-    history.pushState({ project: null }, '', window.location.pathname);
-  }
-
-  // Scroll to top
-  const rightColumn = document.querySelector('.right-column');
-  if (rightColumn) {
-    rightColumn.scrollTop = 0;
-  }
-}
-
-function showProject(id, updateHistory = true) {
-  // Pause and reset all videos first
-  document.querySelectorAll('.project-video').forEach(video => {
-    video.pause();
-    video.currentTime = 0;
-  });
-
-  // Hide all projects
-  document.querySelectorAll('.project-content').forEach(content => {
-    content.classList.remove('active');
-  });
-
-  // Show selected project
-  const selected = document.getElementById(id);
-  if (!selected) {
-    console.warn(`Project with id "${id}" not found`);
-    return;
-  }
-  
-  selected.classList.add('active');
-
-  // Update title
-  const titleElement = document.getElementById('project-title');
-  if (titleElement && PROJECT_TITLES[id]) {
-    titleElement.innerHTML = `<p>${PROJECT_TITLES[id]}</p>`;
-  }
-
-  // Hide home preview
-  const homePreview = document.getElementById('home-preview');
-  if (homePreview) {
-    homePreview.style.display = 'none';
-  }
-
-  // Update active states
-  document.querySelectorAll('.project-link, .header-link').forEach(link => {
-    link.classList.remove('active-link');
-    if (link.getAttribute('data-project') === id) {
-      link.classList.add('active-link');
-    }
-  });
-
-  // Update URL
-  if (updateHistory) {
-    history.pushState({ project: id }, '', `#${id}`);
-  }
-
-  // Scroll to top of project
-  const rightColumn = document.querySelector('.right-column');
-  if (rightColumn) {
-    rightColumn.scrollTop = 0;
-  }
-
-  // Check which videos are in view and play them
-  setTimeout(() => {
-    checkVideosInView();
-  }, 100);
-}
+})();
