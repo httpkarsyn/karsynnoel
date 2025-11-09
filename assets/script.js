@@ -1,130 +1,137 @@
 (() => {
   'use strict';
 
-  const list = document.querySelector('.project-list');
-  const nameBlock = document.querySelector('.name');
+  /* ---------- root refs ---------- */
+  const list         = document.querySelector('.project-list');
+  const nameBlock    = document.querySelector('.name');
 
-  // LEFT (preview)
-  const panel = document.querySelector('.preview-panel');
-  const captionLeft = panel?.querySelector('.caption-left');
-  const moreLink = panel?.querySelector('.more-link');
-  const closeLink = panel?.querySelector('.close-link');
+  // LEFT preview panel
+  const panel        = document.querySelector('.preview-panel');
+  const previewInner = panel?.querySelector('.preview-inner');
+  const captionLeft  = panel?.querySelector('.caption-left');
+  const moreLink     = panel?.querySelector('.more-link');
+  const closeLink    = panel?.querySelector('.close-link');
 
-  // RIGHT (detail)
-  const detail = document.querySelector('.detail-panel');
-  const detailClose = detail?.querySelector('.detail-close');
+  // RIGHT detail panel (unchanged)
+  const detail       = document.querySelector('.detail-panel');
+  const detailClose  = detail?.querySelector('.detail-close');
   const detailCredit = detail?.querySelector('.detail-credit');
-  const detailTextEl = detail?.querySelector('.detail-text');
-  const detailGrid = detail?.querySelector('.detail-grid');
+  const detailText   = detail?.querySelector('.detail-text');
+  const detailGrid   = detail?.querySelector('.detail-grid');
 
-  if (!panel || !captionLeft || !detail || !detailCredit || !detailTextEl || !detailGrid) return;
+  if (!panel || !previewInner || !captionLeft || !detail || !detailCredit || !detailGrid) return;
 
-  // carousel state (LEFT)
+  /* ---------- LEFT: single-stage fade (no overlap) ---------- */
+  // Build a stage that holds one media element at a time
+  const stage = document.createElement('div');
+  stage.className = 'preview-stage';
+
+  // Remove legacy single element if present and insert the stage
+  const legacy = previewInner.querySelector('.preview-img, .preview-video, .preview-stack');
+  if (legacy) legacy.remove();
+  previewInner.insertBefore(stage, previewInner.querySelector('.caption'));
+
+  // Preload helpers
+  function makeMediaEl(url) {
+    const isVideo = /\.(mp4|webm|ogg)(\?|#|$)/i.test(url);
+    if (isVideo) {
+      const v = document.createElement('video');
+      v.src = url;
+      v.autoplay = true;
+      v.muted = true;
+      v.loop = true;
+      v.playsInline = true;
+      v.className = 'preview-media';
+      const ready = new Promise(res => v.addEventListener('loadeddata', res, { once: true }));
+      return { el: v, ready };
+    } else {
+      const img = document.createElement('img');
+      img.alt = '';
+      img.decoding = 'async';
+      img.loading = 'eager';
+      img.className = 'preview-media';
+      const ready = new Promise(res => {
+        img.onload = () => res();
+        img.onerror = () => res();
+      });
+      img.src = url;
+      return { el: img, ready };
+    }
+  }
+
+  let currentEl = null;
+
+  async function swapMedia(url) {
+    // Create and preload the next element
+    const { el: nextEl, ready } = makeMediaEl(url);
+    nextEl.style.opacity = '0';
+    stage.appendChild(nextEl);
+
+    // Hide outgoing immediately (prevents any color mixing)
+    if (currentEl) {
+      currentEl.style.opacity = '0';
+    }
+
+    // Wait until next is ready to show
+    await ready;
+
+    // Ensure reflow so transition will apply
+    void nextEl.offsetWidth;
+
+    // Fade the new one in
+    nextEl.classList.add('show');
+    nextEl.style.opacity = '1';
+
+    // After the fade, remove the old one
+    const REMOVE_DELAY = 260; // keep in sync with CSS transition
+    setTimeout(() => {
+      if (currentEl && currentEl !== nextEl && currentEl.parentNode === stage) {
+        currentEl.remove();
+      }
+      currentEl = nextEl;
+    }, REMOVE_DELAY);
+  }
+
+  /* ---------- carousel state ---------- */
   let images = [];
   let index = 0;
   let autoTimer = null;
   let currentKey = '';
-  const AUTO_MS = 2200;
-
-  /* ---------------- helpers ---------------- */
-  const qs = (sel, root = document) => root.querySelector(sel);
-
-  function getTemplate(id) {
-    const t = document.getElementById(id);
-    return t && 'content' in t ? t.content.cloneNode(true) : null;
-  }
+  const AUTO_MS = 2400;
 
   function stopAuto() {
     if (autoTimer) clearInterval(autoTimer);
     autoTimer = null;
   }
-
   function startAuto() {
     stopAuto();
-    if (images.length > 1) autoTimer = setInterval(() => setMedia(index + 1), AUTO_MS);
+    if (images.length > 1) autoTimer = setInterval(() => setImage(index + 1), AUTO_MS);
   }
-
-  function isVideo(url = '') {
-    return /\.(mp4|webm|ogg)(\?|#|$)/i.test(url);
-  }
-
-  function removeExistingPreviewMedia() {
-    const prev = panel.querySelector('.preview-img, .preview-video');
-    if (!prev) return;
-    if (prev.tagName === 'VIDEO') {
-      prev.pause();
-      prev.removeAttribute('src');
-      prev.load(); // stop network
-    }
-    prev.remove();
-  }
-
-  function mountMedia(url) {
-    removeExistingPreviewMedia();
-
-    let el;
-    if (isVideo(url)) {
-      el = document.createElement('video');
-      el.className = 'preview-video';
-      el.src = url;
-      el.autoplay = true;
-      el.muted = true;
-      el.loop = true;
-      el.playsInline = true;
-      el.setAttribute('playsinline', '');
-      el.setAttribute('muted', '');
-    } else {
-      el = document.createElement('img');
-      el.className = 'preview-img';
-      el.alt = '';
-      el.src = url;
-    }
-
-    const inner = panel.querySelector('.preview-inner');
-    const caption = panel.querySelector('.caption');
-    inner.insertBefore(el, caption);
-  }
-
-  function setMedia(i) {
+  function setImage(i) {
     if (!images.length) return;
     index = (i + images.length) % images.length;
-    mountMedia(images[index]);
+    swapMedia(images[index]);
   }
 
-  function resetLeftPanel() {
-    stopAuto();
-    removeExistingPreviewMedia();
-    captionLeft.innerHTML = '';
-    panel.classList.remove('show');
-    panel.removeAttribute('data-key');
+  /* ---------- template helpers ---------- */
+  function qs(sel, root = document) { return root.querySelector(sel); }
+  function getTemplate(id) {
+    const t = document.getElementById(id);
+    return t && 'content' in t ? t.content.cloneNode(true) : null;
   }
 
-  /* ---------------- openers ---------------- */
-  // LEFT opener for non-about projects
+  /* ---------- openers/closers ---------- */
   function openPreviewFor(el) {
-    const key = el.getAttribute('data-key') || '';
+    const key  = el.getAttribute('data-key') || '';
     const urls = (el.getAttribute('data-images') || '')
-      .split(',')
-      .map(s => s.trim())
-      .filter(Boolean);
-
-    if (!key) return;
-
-    // ABOUT uses no left panel
-    if (key === 'about') {
-      resetLeftPanel();
-      openDetailForKey('about');
-      currentKey = 'about';
-      return;
-    }
-
-    if (!urls.length) return;
+      .split(',').map(s => s.trim()).filter(Boolean);
+    if (!key || !urls.length) return;
 
     currentKey = key;
     images = urls;
     index = 0;
 
-    // caption from template
+    // Populate caption from `${key}-left` if present; fallback to text
     const leftTpl = getTemplate(`${key}-left`);
     if (leftTpl) {
       const left = qs('.caption-left', leftTpl) || leftTpl;
@@ -133,94 +140,81 @@
       captionLeft.innerHTML = `<p class="caption-title">${el.textContent.trim()}</p>`;
     }
 
-    // show first media & start
-    panel.setAttribute('data-key', key);
-    setMedia(0);
+    setImage(0);
     panel.classList.add('show');
     startAuto();
   }
 
-  // RIGHT opener
-  function openDetailForKey(key) {
+  function buildRightFromTemplate(key) {
     const rightTpl = getTemplate(`${key}-right`);
-    detail.setAttribute('data-key', key);
+    if (!rightTpl) { detail.classList.add('show'); return; }
 
-    if (!rightTpl) {
-      detail.classList.add('show');
-      return;
-    }
-
-    // header pieces
-    const creditEl = qs('.detail-credit', rightTpl);
-    const textEl = qs('.detail-text', rightTpl);
-    detailCredit.innerHTML = creditEl ? creditEl.innerHTML : '';
-    detailTextEl.innerHTML = textEl ? textEl.innerHTML : '';
-
-    // media grid
     const scratch = document.createElement('div');
     scratch.appendChild(rightTpl);
-    const mediaNodes = scratch.querySelectorAll('.media');
+
+    const creditEl = qs('.detail-credit', scratch);
+    const textEl   = qs('.detail-text', scratch);
+    const pieces   = scratch.querySelectorAll('.media');
+
+    if (creditEl) detailCredit.innerHTML = creditEl.innerHTML;
+    detailText.innerHTML = textEl ? textEl.innerHTML : '';
+
     detailGrid.innerHTML = '';
-    mediaNodes.forEach(node => detailGrid.appendChild(node));
+    pieces.forEach(node => detailGrid.appendChild(node));
 
     detail.classList.add('show');
   }
 
   function closeAll() {
-    resetLeftPanel();
+    panel.classList.remove('show');
     detail.classList.remove('show');
-    detail.removeAttribute('data-key');
+    stopAuto();
     currentKey = '';
   }
 
-  /* ---------------- interactions ---------------- */
-  // Project clicks → normal (left opens; right via More)
+  /* ---------- interactions ---------- */
+  // Click a project → toggle left preview
   list?.addEventListener('click', (e) => {
     const el = e.target.closest('li[data-key]');
     if (!el) return;
     e.preventDefault();
 
     const key = el.getAttribute('data-key');
-    if ((panel.classList.contains('show') || detail.classList.contains('show')) && key === currentKey) {
+    if (panel.classList.contains('show') && key === currentKey) {
       closeAll();
       return;
     }
     openPreviewFor(el);
   });
 
-  // Name click → ABOUT (right only)
+  // Name → RIGHT only (per your preference)
   nameBlock?.addEventListener('click', (e) => {
     e.preventDefault();
-    if (currentKey === 'about' && detail.classList.contains('show')) {
-      closeAll();
-      return;
-    }
-    resetLeftPanel();
     currentKey = 'about';
-    openDetailForKey('about');
+    buildRightFromTemplate('about');
   });
 
-  // "More" opens right for current key
+  // “More…” opens right for the current key
   moreLink?.addEventListener('click', (e) => {
     e.preventDefault();
     if (!currentKey) return;
-    openDetailForKey(currentKey);
+    buildRightFromTemplate(currentKey);
   });
 
-  // Close buttons
+  // Close controls
   closeLink?.addEventListener('click', (e) => { e.preventDefault(); closeAll(); });
   detailClose?.addEventListener('click', (e) => { e.preventDefault(); closeAll(); });
 
   // Esc closes
   window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeAll(); });
 
-  // Click-away closes (ignore clicks inside panels or on triggers)
+  // Click outside closes
   document.addEventListener('click', (e) => {
-    const target = e.target;
-    const insidePreview = panel.contains(target);
-    const insideDetail = detail.contains(target);
-    const clickedTrigger = target.closest('a, li[data-key], .name');
-    if (insidePreview || insideDetail || clickedTrigger) return;
+    const t = e.target;
+    const insidePreview = panel.contains(t);
+    const insideDetail  = detail.contains(t);
+    const clickedLink   = t.closest('a, li[data-key], .name');
+    if (insidePreview || insideDetail || clickedLink) return;
     closeAll();
   });
 })();

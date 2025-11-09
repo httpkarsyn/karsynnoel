@@ -26,13 +26,12 @@
         data-images="assets/media/intensityofbeing/1 copy.png,assets/media/intensityofbeing/4.jpg, assets/media/intensityofbeing/3.jpg, assets/media/intensityofbeing/2.jpg"
       ><a href="#">The Intensity of Being</a></li>
 
-      <!-- Digital Dilution (paths with spaces encoded) -->
+      <!-- Digital Dilution (note: best to URL-encode spaces, but this will still try) -->
       <li
         data-key="dilution"
         data-images="assets/media/dd mockups/Dig.jpeg,assets/media/dd mockups/dd_mockcovers.jpeg,assets/media/dd mockups/dd mockup_a5.jpg,assets/media/dd mockups/dd mockup_a6.jpg,assets/media/dd mockups/dd mockup_a11.jpg,assets/media/dd mockups/dd mockup_b1.jpg,assets/media/dd mockups/dd mockup_b8.jpg,assets/media/dd mockups/dd mockup_b9.jpg"
       ><a href="#">Digital Dilution</a></li>
 
-      <!-- Olympic list (no spaces in filenames; ok) -->
       <li
         data-key="olympic"
         data-images="assets/media/olympic/1.png, assets/media/olympic/2.png, assets/media/olympic/3.png, assets/media/olympic/4.png, assets/media/olympic/5.png"
@@ -60,7 +59,7 @@
 
       <li
         data-key="chain"
-        data-images="https://picsum.photos/id/216/1600/1100, https://picsum.photos/id/217/1600/1100"
+        data-images="assets/media/chain/2.png, assets/media/chain/1.png,assets/media/chain/3.png,assets/media/chain/4.png,assets/media/chain/5.png,assets/media/chain/7.png,assets/media/chain/6.png"
       ><a href="#">Chain Reaction</a></li>
 
       <li
@@ -93,12 +92,13 @@
     </div>
     <hr class="detail-rule">
     <a href="#" class="detail-close">(Close)</a>
+
+    <!-- media grid (media only; no paragraph here) -->
     <div class="detail-grid"></div>
   </aside>
 
   <!-- =================== PER-PROJECT TEMPLATES =================== -->
   <!-- About (name click) -->
-
   <template id="about-right">
     <div class="detail-credit">
       Karsyn Cardoza<br><em>Designer</em><br><br>kcardo.designs@gmail.com<br>Brooklyn NY
@@ -108,7 +108,7 @@
       <p>Before design, I worked as a hairdresser, then moved into photography and marketing. Those experiences taught me how to observe closely, listen carefully, and think about how visuals and language can work together to tell a story.</p><br>
       <p>My work is rooted in systems thinking, emotional clarity, and rhythm. Whether I’m designing a publication, building a user flow, or creating something tactile, I care about how people move through it. I want what I make to feel intentional, humanistic, and a little unexpected.</p>
     </div>
-    <figure class="media tall">
+    <figure class="media contain h-520">
       <img src="assets/media/IMG_2641.jpg" alt="">
     </figure>
   </template>
@@ -128,11 +128,11 @@
     <div class="detail-text">
       <p>A three-part series exploring the intensity of being a woman. The jumper-ring binding and photo treatment create a subtle discomfort to draw viewers into the narrative. Each section includes a written piece by women reflecting their relationship to the topic. Feminine Curation examines beauty standards, comparing the feminine form to flowers. Traces of Her captures the lingering presence of feminine energy through objects, marks, or a lit space. Rotten Desire explores trauma, the dangers women face, and daily struggles, comparing the female form to decaying fruit to highlight the tension between beauty, vulnerability, and harsh realities.</p>
     </div>
-    <figure class="media tall">
+    <figure class="media ratio-4x5 cover h-520">
       <img src="https://picsum.photos/id/605/1200/1600" alt="">
       <figcaption>Fischli &amp; Weiss</figcaption>
     </figure>
-    <figure class="media">
+    <figure class="media ratio-16x9 cover">
       <img src="https://picsum.photos/id/606/1200/800" alt="">
       <figcaption>Fischli &amp; Weiss</figcaption>
     </figure>
@@ -153,6 +153,7 @@
     <div class="detail-text">
       <p>This project explores how letterforms shift, erode, and transform when pushed through repetition, duration, and decay. What begins as a single, recognizable typeface becomes altered—losing its structure, but gaining new meaning in the process.</p>
     </div>
+    <!-- add media later if you want; utilities will work the same -->
   </template>
 
   <!-- Digital Dilution -->
@@ -170,11 +171,11 @@
     <div class="detail-text">
       <p>Digital Dilution explores how the transition from analog to digital media has transformed the way we engage with time, memory, and identity. Through imagery and text, the collection examines how the ease and speed of digital technology has distanced us from fully experiencing the moment. It reflects on the emotional and personal disconnection that has emerged in the shift to a more fragmented, fleeting digital culture.</p>
     </div>
-    <figure class="media tall">
+    <figure class="media span-2 ratio-16x9 cover">
       <img src="https://picsum.photos/id/640/1200/1600" alt="">
       <figcaption>Contact sheet</figcaption>
     </figure>
-    <figure class="media">
+    <figure class="media ratio-16x9 cover">
       <img src="https://picsum.photos/id/641/1200/800" alt="">
       <figcaption>Sequence</figcaption>
     </figure>
@@ -195,24 +196,23 @@
     <div class="detail-text">
       <p>A study that focuses on the intimacy of photo booths and how a simple curtain draws a boundary between the outside world and individual private moments. Through a collection of photos focusing solely on the bottom half of people inside the booths, the project emphasizes how even a brief act of pulling the curtain creates a profound sense of security and personal space.</p>
     </div>
-    <figure class="media tall">
+    <figure class="media ratio-4x5 cover h-520">
       <img src="https://picsum.photos/id/650/1200/1600" alt="">
       <figcaption>Contact sheet</figcaption>
     </figure>
-    <figure class="media">
+    <figure class="media ratio-16x9 cover">
       <img src="https://picsum.photos/id/651/1200/800" alt="">
       <figcaption>Sequence</figcaption>
     </figure>
   </template>
 
-  <!-- Olympic National Park -->
+  <!-- Olympic National Park (EXAMPLE SIZING APPLIED) -->
   <template id="olympic-left">
     <div class="caption-left">
       <p class="caption-title">Olympic National Park</p>
       <p class="caption-detail"><em>Promotional Series</em></p>
     </div>
   </template>
-
   <template id="olympic-right">
     <div class="detail-credit">
       Olympic National Park<br><em>Promotional Series</em>
@@ -220,13 +220,25 @@
     <div class="detail-text">
       <p>Olympic National Park is a promotional series celebrating the park's unique atmosphere. Inspired by its dreamlike quality—the white skies, heavy fog, and disorienting sense of scale—this series brings that feeling directly to the viewer. Using black-and-white risograph photography to amplify the park’s sense of mystery, and intentionally chaotic typography that mirrors quick-changing scenery, the project encourages visitors to unplug and experience the park for themselves.</p>
     </div>
-    <figure class="media tall">
+
+    <!-- Full-width, 16:9 landscape -->
+    <figure class="media span-2 ratio-16x9 cover">
+      <video src="assets/media/olympic/olympic%20national%20park_compressed.mp4" autoplay muted loop playsinline></video>
+      <figcaption>Book</figcaption>
+    </figure>
+    <!-- Portrait-ish crop, capped height -->
+    <figure class="media ratio-4x5 cover h-520">
       <video src="assets/media/olympic/postcard.mp4" autoplay muted loop playsinline></video>
       <figcaption>Postcard</figcaption>
     </figure>
-    <figure class="media">
-      <video src="assets/media/olympic/olympic%20national%20park_compressed.mp4" autoplay muted loop playsinline></video>
-      <figcaption>Book</figcaption>
+    <!-- No crop, compact -->
+    <figure class="media ratio-4x5 contain h-520">
+      <video src="assets/media/olympic/olympic_social_mock.mp4" autoplay muted loop playsinline></video>
+      <figcaption>Social</figcaption>
+    </figure>
+    <figure class="media span-2 ratio-16x9 cover">
+      <video src="assets/media/olympic/olympic_cenima_mockup.mp4" autoplay muted loop playsinline></video>
+      <figcaption>Cenimatic Trailer</figcaption>
     </figure>
   </template>
 
@@ -245,11 +257,11 @@
     <div class="detail-text">
       <p>An editorial piece that captures the resurgence of Western culture as younger generations reimagine its traditions with fresh creativity. It highlights how cowboy culture, y'allternative fashion, and modern country music blend authenticity with innovation—celebrating the enduring spirit of the West in a new era.</p>
     </div>
-    <figure class="media tall">
+    <figure class="media ratio-4x5 cover h-520">
       <img src="https://picsum.photos/id/660/1200/1600" alt="">
       <figcaption>Contact sheet</figcaption>
     </figure>
-    <figure class="media">
+    <figure class="media ratio-16x9 cover">
       <img src="https://picsum.photos/id/661/1200/800" alt="">
       <figcaption>Sequence</figcaption>
     </figure>
@@ -270,7 +282,6 @@
     <div class="detail-text">
       <p>A non-interactive web piece inspired by Greta Thunberg’s speech, “Panic like the house is on fire.” Designed to echo film end credits, the site evokes the quiet grief that follows the end of something beautiful. There’s no option to scroll backwards, mirroring the irreversibility of climate damage.</p>
     </div>
- 
   </template>
 
   <!-- Chain Reaction -->
@@ -288,14 +299,22 @@
     <div class="detail-text">
       <p>Coming soon…</p>
     </div>
-    <figure class="media tall">
-      <img src="https://picsum.photos/id/680/1200/1600" alt="">
-      <figcaption>Contact sheet</figcaption>
+    <!-- Full-width, 16:9 landscape -->
+    <figure class="media span-2 ratio-16x9 cover">
+      <video src="assets/media/chain/chain_book.mp4" autoplay muted loop playsinline></video>
+      <figcaption>Brochure</figcaption>
     </figure>
-    <figure class="media">
-      <img src="https://picsum.photos/id/681/1200/800" alt="">
-      <figcaption>Sequence</figcaption>
+    <figure class="media span-2 ratio-16x9 cover">
+      <video src="assets/media/chain/subway videos chain reaction.MP4" autoplay muted loop playsinline></video>
+      <figcaption>Advertisement</figcaption>
     </figure>
+    <!-- Portrait-ish crop, capped height -->
+    <figure class="media cover h-520" style="aspect-ratio: 9 / 18;">
+      <video src="assets/media/chain/chain reaction social final.MP4" autoplay muted loop playsinline></video>
+      <figcaption>Social</figcaption>
+    </figure>
+    
+    
   </template>
 
   <!-- Spectra -->
@@ -313,11 +332,11 @@
     <div class="detail-text">
       <p>Coming soon…</p>
     </div>
-    <figure class="media tall">
+    <figure class="media ratio-4x5 cover h-520">
       <img src="https://picsum.photos/id/690/1200/1600" alt="">
       <figcaption>Contact sheet</figcaption>
     </figure>
-    <figure class="media">
+    <figure class="media ratio-16x9 cover">
       <img src="https://picsum.photos/id/691/1200/800" alt="">
       <figcaption>Sequence</figcaption>
     </figure>
