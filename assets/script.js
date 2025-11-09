@@ -217,4 +217,25 @@
     if (insidePreview || insideDetail || clickedLink) return;
     closeAll();
   });
+
+  // Play button functionality for videos with sound
+document.addEventListener("click", (e) => {
+  const btn = e.target.closest(".play-btn");
+  if (!btn) return;
+
+  const wrapper = btn.closest(".video-wrapper");
+  const video = wrapper?.querySelector("video");
+  if (!video) return;
+
+  if (video.paused) {
+    // play with sound
+    video.muted = false;
+    video.play();
+    btn.style.display = "none"; // hide button once playing
+  } else {
+    video.pause();
+    btn.style.display = "flex"; // show button again if paused
+  }
+});
+
 })();
