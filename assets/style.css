@@ -56,7 +56,7 @@ body {
 }
 
 .name {
-  font-weight: 380;
+  font-weight: 500;
   font-size: 78px;
   line-height: 74px;
 }
@@ -69,7 +69,7 @@ body {
 }
 
 .project-list li {
-  font-weight: 380;
+  font-weight: 500;
   font-size: 78px;
   line-height: 80px;
   position: relative;
@@ -82,7 +82,7 @@ body {
 .project-list li::before {
   counter-increment: item;
   content: counter(item, decimal-leading-zero) " ";
-  font-weight: 380;
+  font-weight: 500;
   font-size: 78px;
   line-height: 74px;
   margin-right: 12px;
@@ -194,7 +194,7 @@ body {
 /* header row as grid: credit (col 1), text (col 2) */
 .detail-bar {
   display: grid;
-  grid-template-columns: 220px 1fr;
+  grid-template-columns: 250px 1fr;
   column-gap: 100px;
   align-items: start;
   padding: 0 18px;
@@ -213,6 +213,7 @@ body {
   color: rgba(0, 0, 0, .85);
   margin: 0;
   text-align: left;
+  max-width: 400px; /* try 550–650px for best readability */
 }
 
 /* divider sits right after text */
