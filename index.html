@@ -17,31 +17,26 @@
       data-images="https://picsum.photos/id/1003/1600/1100, https://picsum.photos/id/1011/1600/1100"
       style="cursor:pointer"
     >Karsyn Cardoza</div>
-  
   </div>
 
   <main class="home">
     <ol class="project-list">
-      <!-- each li has a key + its own image list -->
       <li
         data-key="intensity"
         data-images="https://picsum.photos/id/204/1600/1100, https://picsum.photos/id/205/1600/1100, https://picsum.photos/id/206/1600/1100"
       ><a href="#">The Intensity of Being</a></li>
 
+      <!-- Digital Dilution (paths with spaces encoded) -->
       <li
-      data-key="dilution"
-      data-images="assets/media/dd mockups/dd analog print cards.jpg, media/dd mockups/dd detail 2.jpg"
-    >
-      <a href="#">Digital Dilution</a>
-    </li>
-    
+        data-key="dilution"
+        data-images="assets/media/dd%20mockups/dd%20analog%20print%20cards.jpg, assets/media/dd%20mockups/dd%20detail%202.jpg"
+      ><a href="#">Digital Dilution</a></li>
 
-    <li
-    data-key="olympic"
-    data-images="assets/media/olympic/olympic_b01.png">
-    <a href="#">Olympic National Park</a>
-  </li>
-  
+      <!-- Olympic list (no spaces in filenames; ok) -->
+      <li
+        data-key="olympic"
+        data-images="assets/media/olympic/1.png, assets/media/olympic/2.png, assets/media/olympic/3.png, assets/media/olympic/4.png, assets/media/olympic/5.png"
+      ><a href="#">Olympic National Park</a></li>
 
       <li
         data-key="time"
@@ -64,15 +59,14 @@
       ><a href="#">I want you to panic</a></li>
 
       <li
-      data-key="chain"
-      data-images="https://picsum.photos/id/216/1600/1100, https://picsum.photos/id/217/1600/1100"
-    ><a href="#">Chain Reaction</a></li>
+        data-key="chain"
+        data-images="https://picsum.photos/id/216/1600/1100, https://picsum.photos/id/217/1600/1100"
+      ><a href="#">Chain Reaction</a></li>
 
-    <li
-    data-key="spectra"
-    data-images="https://picsum.photos/id/216/1600/1100, https://picsum.photos/id/217/1600/1100"
-  ><a href="#">Spectra</a></li>
-
+      <li
+        data-key="spectra"
+        data-images="https://picsum.photos/id/226/1600/1100, https://picsum.photos/id/227/1600/1100"
+      ><a href="#">Spectra</a></li>
     </ol>
   </main>
 
@@ -81,7 +75,7 @@
     <div class="preview-inner">
       <img class="preview-img" src="" alt="">
       <div class="caption">
-        <div class="caption-left"><!-- filled from template --></div>
+        <div class="caption-left"></div>
         <div class="caption-links">
           <a href="#" class="more-link">(More...)</a>
           <a href="#" class="close-link">(Close)</a>
@@ -92,12 +86,14 @@
 
   <!-- RIGHT: detail split panel -->
   <aside class="detail-panel" aria-hidden="true" role="dialog" aria-label="Project details">
+    <!-- credit + paragraph row -->
     <div class="detail-bar">
-      <div class="detail-credit"><!-- filled from template --></div>
-      <a href="#" class="detail-close">(Close)</a>
+      <div class="detail-credit"></div>
+      <div class="detail-text"></div>
     </div>
     <hr class="detail-rule">
-    <div class="detail-grid"><!-- filled from template --></div>
+    <a href="#" class="detail-close">(Close)</a>
+    <div class="detail-grid"></div>
   </aside>
 
   <!-- =================== PER-PROJECT TEMPLATES =================== -->
@@ -114,11 +110,9 @@
       Karsyn Cardoza<br><em>Designer</em><br><em>Brooklyn NY</em>
     </div>
     <div class="detail-text">
-      <p>I’m a designer based in Brooklyn, originally from Austin, Texas. I studied Communication Design at Parsons School of Design and Texas State University. My work moves between branding, editorial, and digital design, always with a focus on the small details that shape how things feel.
-
-        Before design, I worked as a hairdresser, then moved into photography and marketing. Those experiences taught me how to observe closely, listen carefully, and think about how visuals and language can work together to tell a story.
-        
-        My work is rooted in systems thinking, emotional clarity, and rhythm. Whether I’m designing a publication, building a user flow, or creating something tactile, I care about how people move through it. I want what I make to feel intentional, humanistic, and a little unexpected.</p>
+      <p>I’m a designer based in Brooklyn, originally from Austin, Texas. I studied Communication Design at Parsons School of Design and Texas State University. My work moves between branding, editorial, and digital design, always with a focus on the small details that shape how things feel.</p>
+      <p>Before design, I worked as a hairdresser, then moved into photography and marketing. Those experiences taught me how to observe closely, listen carefully, and think about how visuals and language can work together to tell a story.</p>
+      <p>My work is rooted in systems thinking, emotional clarity, and rhythm. Whether I’m designing a publication, building a user flow, or creating something tactile, I care about how people move through it. I want what I make to feel intentional, humanistic, and a little unexpected.</p>
     </div>
     <figure class="media tall">
       <img src="https://picsum.photos/id/1005/1200/1600" alt="">
@@ -133,20 +127,17 @@
   <!-- Intensity -->
   <template id="intensity-left">
     <div class="caption-left">
-      <p class="caption-title">The Intensity of Being </p>
+      <p class="caption-title">The Intensity of Being</p>
       <p class="caption-detail"><em>Female Curation, Traces of Her, Rotten Desire</em></p>
     </div>
   </template>
 
   <template id="intensity-right">
     <div class="detail-credit">
-     The Intensity of Being <br><em>Female Curation, Traces of Her, Rotten Desire</em>
+      The Intensity of Being<br><em>Female Curation, Traces of Her, Rotten Desire</em>
     </div>
     <div class="detail-text">
-      <p>A three-part series exploring the intensity of being a woman. The jumper-ring binding and photo treatment create a subtle discomfort to draw viewers into the narrative. Each section includes a written piece by women reflecting their relationship to the topic. 
-        Feminine Curation examines beauty standards, comparing the feminine form to flowers.
-        Traces of Her captures the lingering presence of feminine energy through objects, marks, or a lit space, showing how a woman can be felt even when absent.
-        Rotten Desire explores trauma, the dangers women face, and daily struggles, comparing the female form to decaying fruit to highlight the tension between beauty, vulnerability, and harsh realities. </p>
+      <p>A three-part series exploring the intensity of being a woman. The jumper-ring binding and photo treatment create a subtle discomfort to draw viewers into the narrative. Each section includes a written piece by women reflecting their relationship to the topic. Feminine Curation examines beauty standards, comparing the feminine form to flowers. Traces of Her captures the lingering presence of feminine energy through objects, marks, or a lit space. Rotten Desire explores trauma, the dangers women face, and daily struggles, comparing the female form to decaying fruit to highlight the tension between beauty, vulnerability, and harsh realities.</p>
     </div>
     <figure class="media tall">
       <img src="https://picsum.photos/id/605/1200/1600" alt="">
@@ -182,7 +173,8 @@
       <figcaption>Sequence</figcaption>
     </figure>
   </template>
-<!-- Dilution -->
+
+  <!-- Digital Dilution -->
   <template id="dilution-left">
     <div class="caption-left">
       <p class="caption-title">Digital Dilution</p>
@@ -195,21 +187,19 @@
       Digital Dilution<br><em>The Lost Connection with the Moment and Self</em>
     </div>
     <div class="detail-text">
-      <p>Digital Dilution explores how the transition from analog to digital media has transformed the way we engage with time, memory, and identity. Through imagery and text, the collection examines how the ease and speed of digital technology has distanced us from fully experiencing the moment. It reflects on the emotional and personal disconnection that has emerged in the shift to a more fragmented, fleeting digital culture.
-      </p>
+      <p>Digital Dilution explores how the transition from analog to digital media has transformed the way we engage with time, memory, and identity. Through imagery and text, the collection examines how the ease and speed of digital technology has distanced us from fully experiencing the moment. It reflects on the emotional and personal disconnection that has emerged in the shift to a more fragmented, fleeting digital culture.</p>
     </div>
     <figure class="media tall">
-      <img src="https://picsum.photos/id/630/1200/1600" alt="">
+      <img src="https://picsum.photos/id/640/1200/1600" alt="">
       <figcaption>Contact sheet</figcaption>
     </figure>
     <figure class="media">
-      <img src="https://picsum.photos/id/631/1200/800" alt="">
+      <img src="https://picsum.photos/id/641/1200/800" alt="">
       <figcaption>Sequence</figcaption>
     </figure>
   </template>
 
-
-  <!-- Frame -->
+  <!-- Out of Frame -->
   <template id="frame-left">
     <div class="caption-left">
       <p class="caption-title">Out of Frame</p>
@@ -219,24 +209,23 @@
 
   <template id="frame-right">
     <div class="detail-credit">
-     Out of Frame<br><em>Study of intimacy behind photo booths</em>
+      Out of Frame<br><em>Study of intimacy behind photo booths</em>
     </div>
     <div class="detail-text">
-      <p>A study that focuses on the intimacy of photo booths and how a simple curtain draws a boundary between the outside world and individual private moments. Through a collection of photos focusing solely on the bottom half of people inside the booths, I emphasize how even a brief act of pulling the curtain creates a profound sense of security and personal space.
-      </p>
+      <p>A study that focuses on the intimacy of photo booths and how a simple curtain draws a boundary between the outside world and individual private moments. Through a collection of photos focusing solely on the bottom half of people inside the booths, the project emphasizes how even a brief act of pulling the curtain creates a profound sense of security and personal space.</p>
     </div>
     <figure class="media tall">
-      <img src="https://picsum.photos/id/630/1200/1600" alt="">
+      <img src="https://picsum.photos/id/650/1200/1600" alt="">
       <figcaption>Contact sheet</figcaption>
     </figure>
     <figure class="media">
-      <img src="https://picsum.photos/id/631/1200/800" alt="">
+      <img src="https://picsum.photos/id/651/1200/800" alt="">
       <figcaption>Sequence</figcaption>
     </figure>
   </template>
 
-   <!-- Olympic-->
-   <template id="olympic-left">
+  <!-- Olympic National Park -->
+  <template id="olympic-left">
     <div class="caption-left">
       <p class="caption-title">Olympic National Park</p>
       <p class="caption-detail"><em>Promotional Series</em></p>
@@ -248,72 +237,69 @@
       Olympic National Park<br><em>Promotional Series</em>
     </div>
     <div class="detail-text">
-      <p>Olympic National Park is a promotional series celebrating the park's unique atmosphere. Inspired by its dreamlike quality — the white skies, heavy fog, and disorienting sense of scale, this series brings this feeling directly to the viewer's experience. With the use of black-and-white risograph photography enhancing the park's sense of mystery. The publication omits folios, paired with intentionally chaotic typography, to create an unpredictable reading experience that mirrors the park's quick changing scenery. The project aims to spark curiosity and encourage visitors to unplug and experience the park for themselves.
-      </p>
+      <p>Olympic National Park is a promotional series celebrating the park's unique atmosphere. Inspired by its dreamlike quality—the white skies, heavy fog, and disorienting sense of scale—this series brings that feeling directly to the viewer. Using black-and-white risograph photography to amplify the park’s sense of mystery, and intentionally chaotic typography that mirrors quick-changing scenery, the project encourages visitors to unplug and experience the park for themselves.</p>
     </div>
     <figure class="media tall">
-      <img src="https://picsum.photos/id/630/1200/1600" alt="">
+      <video src="assets/media/olympic/postcard.mp4" autoplay muted loop playsinline></video>
+      <figcaption>Postcard</figcaption>
+    </figure>
+    <figure class="media">
+      <video src="assets/media/olympic/olympic%20national%20park_compressed.mp4" autoplay muted loop playsinline></video>
+      <figcaption>Book</figcaption>
+    </figure>
+  </template>
+
+  <!-- The Revival -->
+  <template id="revival-left">
+    <div class="caption-left">
+      <p class="caption-title">The Revival</p>
+      <p class="caption-detail"><em>The shift of the cowboy</em></p>
+    </div>
+  </template>
+
+  <template id="revival-right">
+    <div class="detail-credit">
+      The Revival<br><em>The shift of the cowboy</em>
+    </div>
+    <div class="detail-text">
+      <p>An editorial piece that captures the resurgence of Western culture as younger generations reimagine its traditions with fresh creativity. It highlights how cowboy culture, y'allternative fashion, and modern country music blend authenticity with innovation—celebrating the enduring spirit of the West in a new era.</p>
+    </div>
+    <figure class="media tall">
+      <img src="https://picsum.photos/id/660/1200/1600" alt="">
       <figcaption>Contact sheet</figcaption>
     </figure>
     <figure class="media">
-      <img src="https://picsum.photos/id/631/1200/800" alt="">
+      <img src="https://picsum.photos/id/661/1200/800" alt="">
       <figcaption>Sequence</figcaption>
     </figure>
   </template>
 
- <!-- Revival -->
- <template id="revival-left">
-  <div class="caption-left">
-    <p class="caption-title">The Revival</p>
-    <p class="caption-detail"><em>The shift of the cowboy</em></p>
-  </div>
-</template>
+  <!-- Panic -->
+  <template id="panic-left">
+    <div class="caption-left">
+      <p class="caption-title">I want you to panic</p>
+      <p class="caption-detail"><em>Stories as Networks</em></p>
+    </div>
+  </template>
 
-<template id="revival-right">
-  <div class="detail-credit">
- The Revival<br><em>The shift of the cowboy</em>
-  </div>
-  <div class="detail-text">
-    <p>An editorial piece that captures the resurgence of Western culture as the younger generations reimagine its traditions with fresh creativity. Through bold visuals and stories, it highlights how cowboy culture, y'allternative fashion, and modern country music blend authenticity with innovation. This project celebrates the enduring spirit of the West, alive and thriving in a new era.
-    </p>
-  </div>
-  <figure class="media tall">
-    <img src="https://picsum.photos/id/630/1200/1600" alt="">
-    <figcaption>Contact sheet</figcaption>
-  </figure>
-  <figure class="media">
-    <img src="https://picsum.photos/id/631/1200/800" alt="">
-    <figcaption>Sequence</figcaption>
-  </figure>
-</template>
+  <template id="panic-right">
+    <div class="detail-credit">
+      I want you to panic<br><em>Stories as Networks</em>
+    </div>
+    <div class="detail-text">
+      <p>A non-interactive web piece inspired by Greta Thunberg’s speech, “Panic like the house is on fire.” Designed to echo film end credits, the site evokes the quiet grief that follows the end of something beautiful. There’s no option to scroll backwards, mirroring the irreversibility of climate damage.</p>
+    </div>
+    <figure class="media tall">
+      <img src="https://picsum.photos/id/670/1200/1600" alt="">
+      <figcaption>Contact sheet</figcaption>
+    </figure>
+    <figure class="media">
+      <img src="https://picsum.photos/id/671/1200/800" alt="">
+      <figcaption>Sequence</figcaption>
+    </figure>
+  </template>
 
- <!-- panic -->
- <template id="panic-left">
-  <div class="caption-left">
-    <p class="caption-title">I want you to panic</p>
-    <p class="caption-detail"><em>Stories as Networks</em></p>
-  </div>
-</template>
-
-<template id="panic-right">
-  <div class="detail-credit">
-I want you to panic<br><em>Stories as Networks</em>
-  </div>
-  <div class="detail-text">
-    <p>A non-interactive web piece inspired by Greta Thunberg's speech, Panic Like The House is on Fire. Designed to mimic the format of end credits in a film, the site evokes the quiet grief that follows the end of something beautiful. There's no option to scroll backwards, mirroring the irreversible damage we've done to the planet. The experience is meant to be linear, somber, and final.
-    </p>
-  </div>
-  <figure class="media tall">
-    <img src="https://picsum.photos/id/630/1200/1600" alt="">
-    <figcaption>Contact sheet</figcaption>
-  </figure>
-  <figure class="media">
-    <img src="https://picsum.photos/id/631/1200/800" alt="">
-    <figcaption>Sequence</figcaption>
-  </figure>
-</template>
-
-  <!-- Chain-->
+  <!-- Chain Reaction -->
   <template id="chain-left">
     <div class="caption-left">
       <p class="caption-title">Chain Reaction</p>
@@ -323,50 +309,45 @@ I want you to panic<br><em>Stories as Networks</em>
 
   <template id="chain-right">
     <div class="detail-credit">
-     Chain Reaction<br><em>User Experience | MoMA</em>
+      Chain Reaction<br><em>User Experience | MoMA</em>
     </div>
     <div class="detail-text">
-      <p>Coming soon...
-      </p>
+      <p>Coming soon…</p>
     </div>
     <figure class="media tall">
-      <img src="https://picsum.photos/id/630/1200/1600" alt="">
+      <img src="https://picsum.photos/id/680/1200/1600" alt="">
       <figcaption>Contact sheet</figcaption>
     </figure>
     <figure class="media">
-      <img src="https://picsum.photos/id/631/1200/800" alt="">
+      <img src="https://picsum.photos/id/681/1200/800" alt="">
       <figcaption>Sequence</figcaption>
     </figure>
   </template>
 
-  <!-- Spectra-->
+  <!-- Spectra -->
   <template id="spectra-left">
     <div class="caption-left">
       <p class="caption-title">Spectra</p>
-      <p class="caption-detail"><em>Colors of cenima</em></p>
+      <p class="caption-detail"><em>Colors of cinema</em></p>
     </div>
   </template>
 
   <template id="spectra-right">
     <div class="detail-credit">
-     Spectra<br><em>Colors of cenima</em>
+      Spectra<br><em>Colors of cinema</em>
     </div>
     <div class="detail-text">
-      <p>Coming soon...
-      </p>
+      <p>Coming soon…</p>
     </div>
     <figure class="media tall">
-      <img src="https://picsum.photos/id/630/1200/1600" alt="">
+      <img src="https://picsum.photos/id/690/1200/1600" alt="">
       <figcaption>Contact sheet</figcaption>
     </figure>
     <figure class="media">
-      <img src="https://picsum.photos/id/631/1200/800" alt="">
+      <img src="https://picsum.photos/id/691/1200/800" alt="">
       <figcaption>Sequence</figcaption>
     </figure>
   </template>
-
-
-  <!-- Add more project templates: dilution-left/right, frame-left/right, etc. -->
 
   <script src="/assets/script.js" defer></script>
 </body>

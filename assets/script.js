@@ -1,23 +1,24 @@
 (() => {
   'use strict';
 
-  const list        = document.querySelector('.project-list');
-  const nameBlock   = document.querySelector('.name');
+  const list = document.querySelector('.project-list');
+  const nameBlock = document.querySelector('.name');
 
   // LEFT
-  const panel       = document.querySelector('.preview-panel');
-  const imgEl       = panel?.querySelector('.preview-img');
+  const panel = document.querySelector('.preview-panel');
+  const imgEl = panel?.querySelector('.preview-img');
   const captionLeft = panel?.querySelector('.caption-left');
-  const moreLink    = panel?.querySelector('.more-link');
-  const closeLink   = panel?.querySelector('.close-link');
+  const moreLink = panel?.querySelector('.more-link');
+  const closeLink = panel?.querySelector('.close-link');
 
   // RIGHT
-  const detail      = document.querySelector('.detail-panel');
+  const detail = document.querySelector('.detail-panel');
   const detailClose = detail?.querySelector('.detail-close');
-  const detailCredit= detail?.querySelector('.detail-credit');
-  const detailGrid  = detail?.querySelector('.detail-grid');
+  const detailCredit = detail?.querySelector('.detail-credit');
+  const detailTextEl = detail?.querySelector('.detail-text'); // header paragraph slot
+  const detailGrid = detail?.querySelector('.detail-grid');
 
-  if (!panel || !imgEl || !captionLeft || !detail || !detailCredit || !detailGrid) return;
+  if (!panel || !imgEl || !captionLeft || !detail || !detailCredit || !detailGrid || !detailTextEl) return;
 
   // carousel state
   let images = [];
@@ -27,18 +28,38 @@
   const AUTO_MS = 2200;
 
   /* ---------------- helpers ---------------- */
-  function qs(sel, root = document) { return root.querySelector(sel); }
+  function qs(sel, root = document) {
+    return root.querySelector(sel);
+  }
+
   function getTemplate(id) {
     const t = document.getElementById(id);
     return t && 'content' in t ? t.content.cloneNode(true) : null;
   }
-  function stopAuto(){ if (autoTimer) clearInterval(autoTimer); autoTimer = null; }
-  function startAuto(){ stopAuto(); if (images.length > 1) autoTimer = setInterval(()=>setImage(index+1), AUTO_MS); }
-  function setImage(i){ if (!images.length) return; index = (i + images.length) % images.length; imgEl.src = images[index]; }
 
-  function openPreviewFor(el){
+  function stopAuto() {
+    if (autoTimer) clearInterval(autoTimer);
+    autoTimer = null;
+  }
+
+  function startAuto() {
+    stopAuto();
+    if (images.length > 1) autoTimer = setInterval(() => setImage(index + 1), AUTO_MS);
+  }
+
+  function setImage(i) {
+    if (!images.length) return;
+    index = (i + images.length) % images.length;
+    imgEl.src = images[index];
+  }
+
+  function openPreviewFor(el) {
     const key = el.getAttribute('data-key') || '';
-    const urls = (el.getAttribute('data-images') || '').split(',').map(s=>s.trim()).filter(Boolean);
+    const urls = (el.getAttribute('data-images') || '')
+      .split(',')
+      .map(s => s.trim())
+      .filter(Boolean);
+
     if (!key || !urls.length) return;
 
     currentKey = key;
@@ -59,27 +80,37 @@
     startAuto();
   }
 
-  function openDetailForKey(key){
+  function openDetailForKey(key) {
     const rightTpl = getTemplate(`${key}-right`);
-    if (!rightTpl) { detail.classList.add('show'); return; }
+    detail.setAttribute('data-key', key);
 
-    // credit (from template's .detail-credit)
+    if (!rightTpl) {
+      detail.classList.add('show');
+      return;
+    }
+
+    // credit
     const creditEl = qs('.detail-credit', rightTpl);
-    if (creditEl) detailCredit.innerHTML = creditEl.innerHTML;
+    detailCredit.innerHTML = creditEl ? creditEl.innerHTML : '';
 
-    // grid content: collect .detail-text and .media from the template
+    // paragraph into header slot
+    const textEl = qs('.detail-text', rightTpl);
+    detailTextEl.innerHTML = textEl ? textEl.innerHTML : '';
+
+    // media into grid
     const scratch = document.createElement('div');
     scratch.appendChild(rightTpl);
-    const pieces = scratch.querySelectorAll('.detail-text, .media');
+    const mediaNodes = scratch.querySelectorAll('.media');
     detailGrid.innerHTML = '';
-    pieces.forEach(node => detailGrid.appendChild(node));
+    mediaNodes.forEach(node => detailGrid.appendChild(node));
 
     detail.classList.add('show');
   }
 
-  function closeAll(){
+  function closeAll() {
     panel.classList.remove('show');
     detail.classList.remove('show');
+    detail.removeAttribute('data-key');
     stopAuto();
     currentKey = '';
   }
@@ -87,7 +118,7 @@
   /* --------------- interactions --------------- */
 
   // click a project (left opens; right via More)
-  list?.addEventListener('click', (e)=>{
+  list?.addEventListener('click', (e) => {
     const el = e.target.closest('li[data-key]');
     if (!el) return;
     e.preventDefault();
@@ -102,37 +133,42 @@
   });
 
   // click name: open BOTH left + right with "about" templates
-  nameBlock?.addEventListener('click', ()=>{
+  nameBlock?.addEventListener('click', () => {
     openPreviewFor(nameBlock);
     openDetailForKey('about');
   });
 
   // More: open right for the current key
-  moreLink?.addEventListener('click', (e)=>{
+  moreLink?.addEventListener('click', (e) => {
     e.preventDefault();
     if (!currentKey) return;
     openDetailForKey(currentKey);
   });
 
   // Close buttons: close both panels
-  closeLink?.addEventListener('click', (e)=>{ e.preventDefault(); closeAll(); });
-  detailClose?.addEventListener('click', (e)=>{ e.preventDefault(); closeAll(); });
+  closeLink?.addEventListener('click', (e) => {
+    e.preventDefault();
+    closeAll();
+  });
+
+  detailClose?.addEventListener('click', (e) => {
+    e.preventDefault();
+    closeAll();
+  });
 
   // Esc closes both
-  window.addEventListener('keydown', (e)=>{ if (e.key === 'Escape') closeAll(); });
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeAll();
+  });
+
   // clicking anywhere on the page closes both panels (except on interactive elements)
-document.addEventListener('click', (e) => {
-  const target = e.target;
-
-  // don't trigger close if user clicks inside either panel or on a project/name link
-  const insidePreview = panel.contains(target);
-  const insideDetail = detail.contains(target);
-  const clickedLink = target.closest('a, li[data-key], .name');
-
-  if (insidePreview || insideDetail || clickedLink) return;
-
-  // otherwise close everything
-  closeAll();
-});
+  document.addEventListener('click', (e) => {
+    const target = e.target;
+    const insidePreview = panel.contains(target);
+    const insideDetail = detail.contains(target);
+    const clickedLink = target.closest('a, li[data-key], .name');
+    if (insidePreview || insideDetail || clickedLink) return;
+    closeAll();
+  });
 
 })();
