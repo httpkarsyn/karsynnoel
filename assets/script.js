@@ -238,4 +238,45 @@ document.addEventListener("click", (e) => {
   }
 });
 
+
+  // open the full-screen detail
+  function openDetail() {
+    document.body.classList.add('panel-open');
+    const panel = document.querySelector('.detail-panel');
+    if (!panel) return;
+    panel.classList.add('show');
+
+    // reset scroll to top inside the panel
+    const grid = panel.querySelector('.detail-grid');
+    if (grid) grid.scrollTop = 0;
+  }
+
+  // close the full-screen detail
+  function closeDetail() {
+    document.body.classList.remove('panel-open');
+    const panel = document.querySelector('.detail-panel');
+    if (!panel) return;
+    panel.classList.remove('show');
+  }
+
+  // delegate clicks for More / Close
+  document.addEventListener('click', (e) => {
+    const more = e.target.closest('.more-link');
+    if (more) {
+      e.preventDefault();
+      openDetail();
+      return;
+    }
+    const closer = e.target.closest('.detail-close');
+    if (closer) {
+      e.preventDefault();
+      closeDetail();
+    }
+  });
+
+  // optional: open detail when tapping anywhere on the preview (if you want)
+  // document.querySelector('.preview-panel')?.addEventListener('click', openDetail);
+
+
+
 })();

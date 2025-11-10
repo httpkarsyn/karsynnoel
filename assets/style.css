@@ -189,3 +189,91 @@ body { padding: 20px; }
 .play-btn:hover {
   background: rgba(0, 0, 0, 0.7);
 }
+/* ===== MOBILE: full-screen right panel ===== */
+@media (max-width: 600px){
+
+  /* keep left/preview panel unchanged */
+  .preview-panel{
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 60vh;
+    border-right: 1px solid rgba(0,0,0,.08);
+    border-bottom: 1px solid rgba(0,0,0,.08);
+    box-shadow: 0 15px 50px rgba(0,0,0,.1);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 10;
+  }
+  .preview-panel.show{ display: flex; }
+/* ===== MOBILE: homepage font adjustments ===== */
+@media (max-width: 600px){
+  .name {
+    font-size: 45px;
+    line-height: 28px;
+  }
+  .project-list li {
+    font-size: 45px;
+    line-height: 58px;
+  }
+  .project-list li::before {
+    font-size: 45px;
+    line-height: 58px;
+  }
+}
+
+  /* RIGHT PANEL now covers entire screen */
+  .detail-panel{
+    position: fixed;
+    top: 0; right: 0;
+    width: 100vw;
+    height: 100dvh;
+    background: #fff;
+    border: none;
+    transform: translateY(100%);
+    transition: transform .28s ease;
+    display: flex;
+    flex-direction: column;
+    z-index: 11;
+    padding-top: 10px;
+  }
+  .detail-panel.show{
+    transform: translateY(0);
+  }
+
+  /* content inside scrolls */
+  .detail-grid{
+    flex: 1 1 auto;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 18px 18px;
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .media.tall{ grid-row: auto; grid-column: 1; }
+
+  /* header + close button */
+  .detail-bar{
+    grid-template-columns: 1fr;
+    padding: 12px 18px;
+    row-gap: 6px;
+  }
+  .detail-rule{ margin: 8px 18px 0; }
+  .detail-close{
+    align-self: end;
+    margin: 6px 18px 10px;
+    font-size: 12px;
+    padding: 6px 8px;
+  }
+
+  /* lock background when open */
+  body.panel-open{ overflow: hidden; }
+}
+/* ===== MOBILE: hide numbers before project names ===== */
+@media (max-width: 600px){
+  .project-list li::before {
+    display: none;
+    content: none;
+  }
+}
