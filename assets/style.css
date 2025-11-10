@@ -210,12 +210,12 @@ body { padding: 20px; }
 /* ===== MOBILE: homepage font adjustments ===== */
 @media (max-width: 600px){
   .name {
-    font-size: 45px;
+    font-size: 38px;
     line-height: 28px;
   }
   .project-list li {
-    font-size: 45px;
-    line-height: 58px;
+    font-size: 38px;
+    line-height: 51px;
   }
   .project-list li::before {
     font-size: 45px;
