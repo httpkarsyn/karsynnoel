@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Karsyn Cardoza</title>
+
   <link rel="stylesheet" href="https://use.typekit.net/pja8ouo.css">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
@@ -17,18 +17,18 @@
       class="name"
       data-key="about"
       data-images="assets/media/IMG_2641.jpg"
-      style="cursor:pointer"
-    >Karsyn Cardoza</div>
+    >
+      Karsyn Cardoza
+    </div>
   </div>
 
   <main class="home">
     <ol class="project-list">
       <li
         data-key="intensity"
-        data-images="assets/media/intensityofbeing/1 copy.png,assets/media/intensityofbeing/4.jpg, assets/media/intensityofbeing/3.jpg, assets/media/intensityofbeing/2.jpg"
+        data-images="assets/media/intensityofbeing/1 copy.png,assets/media/intensityofbeing/4.jpg,assets/media/intensityofbeing/3.jpg,assets/media/intensityofbeing/2.jpg"
       ><a href="#">The Intensity of Being</a></li>
 
-      <!-- Digital Dilution (note: best to URL-encode spaces, but this will still try) -->
       <li
         data-key="dilution"
         data-images="assets/media/dd mockups/8.jpg,assets/media/dd mockups/11.jpg,assets/media/dd mockups/12.jpg,assets/media/dd mockups/dd mockup_a5.jpg,assets/media/dd mockups/dd mockup_a6.jpg,assets/media/dd mockups/dd mockup_a11.jpg,assets/media/dd mockups/dd mockup_b1.jpg,assets/media/dd mockups/dd mockup_b8.jpg,assets/media/dd mockups/dd mockup_b9.jpg"
@@ -36,13 +36,13 @@
 
       <li
         data-key="olympic"
-        data-images="assets/media/olympic/1.png, assets/media/olympic/2.png, assets/media/olympic/3.png, assets/media/olympic/4.png, assets/media/olympic/5.png"
-      ><a href="#">Olympic National Park</a></li>     
-      
+        data-images="assets/media/olympic/1.png,assets/media/olympic/2.png,assets/media/olympic/3.png,assets/media/olympic/4.png,assets/media/olympic/5.png"
+      ><a href="#">Olympic National Park</a></li>
+
       <li
-      data-key="chain"
-      data-images="assets/media/chain/2.png, assets/media/chain/1.png,assets/media/chain/3.png,assets/media/chain/4.png,assets/media/chain/5.png,assets/media/chain/7.png,assets/media/chain/6.png"
-    ><a href="#">Chain Reaction</a></li>
+        data-key="chain"
+        data-images="assets/media/chain/2.png,assets/media/chain/1.png,assets/media/chain/3.png,assets/media/chain/4.png,assets/media/chain/5.png,assets/media/chain/7.png,assets/media/chain/6.png"
+      ><a href="#">Chain Reaction</a></li>
 
       <li
         data-key="time"
@@ -59,11 +59,10 @@
         data-images="assets/media/panic/video.mp4"
       ><a href="#">I want you to panic</a></li>
 
-
       <li
-      data-key="frame"
-      data-images="assets/media/frame/out of frame mock p9.jpg"
-    ><a href="#">Out of Frame</a></li>
+        data-key="frame"
+        data-images="assets/media/frame/out of frame mock p9.jpg"
+      ><a href="#">Out of Frame</a></li>
 
       <li
         data-key="spectra"
@@ -75,6 +74,7 @@
   <!-- LEFT: preview panel -->
   <div class="preview-panel" aria-hidden="true" role="dialog" aria-label="Project preview">
     <div class="preview-inner">
+      <!-- JS will replace this with a .preview-stage -->
       <img class="preview-img" src="" alt="">
       <div class="caption">
         <div class="caption-left"></div>
@@ -88,23 +88,25 @@
 
   <!-- RIGHT: detail split panel -->
   <aside class="detail-panel" aria-hidden="true" role="dialog" aria-label="Project details">
-    <!-- credit + paragraph row -->
     <div class="detail-bar">
       <div class="detail-credit"></div>
       <div class="detail-text"></div>
     </div>
     <hr class="detail-rule">
     <a href="#" class="detail-close">(Close)</a>
-
-    <!-- media grid (media only; no paragraph here) -->
     <div class="detail-grid"></div>
   </aside>
 
   <!-- =================== PER-PROJECT TEMPLATES =================== -->
+
   <!-- About (name click) -->
   <template id="about-right">
     <div class="detail-credit">
-      Karsyn Cardoza<br><em>Designer</em><br><br>kcardo.designs@gmail.com<br> @httpkarsyn.dez<br>Brooklyn NY
+      Karsyn Cardoza<br><em>Designer</em><br><br>
+      kcardo.designs@gmail.com<br>
+      @karsyncardoza.dez<br>
+      (929)688-3581<br>
+      Brooklyn NY
     </div>
     <div class="detail-text">
       <p>I’m a designer based in Brooklyn, originally from Austin, Texas. I studied Communication Design at Parsons School of Design and Texas State University. My work moves between branding, editorial, and digital design, always with a focus on the small details that shape how things feel.</p><br>
@@ -129,10 +131,9 @@
       The Intensity of Being<br><em>Female Curation, Traces of Her, Rotten Desire</em>
     </div>
     <div class="detail-text">
-      <p>A three-part series exploring the intensity of being a woman. The jumper-ring binding and photo treatment create a subtle discomfort to draw viewers into the narrative. Each section includes a written piece by women reflecting their relationship to the topic. <br><br>Feminine Curation examines beauty standards, comparing the feminine form to flowers. Traces of Her captures the lingering presence of feminine energy through objects, marks, or a lit space. Rotten Desire explores trauma, the dangers women face, and daily struggles, comparing the female form to decaying fruit to highlight the tension between beauty, vulnerability, and harsh realities.</p>
+      <p>A three-part series exploring the intensity of being a woman. The jumper-ring binding and photo treatment create a subtle discomfort to draw viewers into the narrative. Each section includes a written piece by women reflecting their relationship to the topic.<br><br>Feminine Curation examines beauty standards, comparing the feminine form to flowers. Traces of Her captures the lingering presence of feminine energy through objects, marks, or a lit space. Rotten Desire explores trauma, the dangers women face, and daily struggles, comparing the female form to decaying fruit to highlight the tension between beauty, vulnerability, and harsh realities.</p>
     </div>
-     <!-- Full-width, 16:9 landscape -->
-     <figure class="media span-2 ratio-16x9 cover">
+    <figure class="media span-2 ratio-16x9 cover">
       <video src="assets/media/intensityofbeing/book.mp4" autoplay muted loop playsinline></video>
       <figcaption>Book</figcaption>
     </figure>
@@ -153,7 +154,6 @@
     <div class="detail-text">
       <p>This project explores how letterforms shift, erode, and transform when pushed through repetition, duration, and decay. What begins as a single, recognizable typeface becomes altered—losing its structure, but gaining new meaning in the process.</p>
     </div>
-    <!-- add media later if you want; utilities will work the same -->
   </template>
 
   <!-- Digital Dilution -->
@@ -181,14 +181,12 @@
     </figure>
     <figure class="media span-2 ratio-16x9 cover">
       <div class="video-wrapper">
-      <video src="assets/media/dd mockups/film.mp4" preload="none" playsinline></video>
-      <button class="play-btn">▶</button>
-    </video>
+        <video src="assets/media/dd mockups/film.mp4" preload="none" playsinline></video>
+        <button class="play-btn">▶</button>
+      </div>
       <figcaption>Film</figcaption>
     </figure>
   </template>
-
-
 
   <!-- Out of Frame -->
   <template id="frame-left">
@@ -205,16 +203,16 @@
     <div class="detail-text">
       <p>Documentation coming soon...<br><br>A study that focuses on the intimacy of photo booths and how a simple curtain draws a boundary between the outside world and individual private moments. Through a collection of photos focusing solely on the bottom half of people inside the booths, the project emphasizes how even a brief act of pulling the curtain creates a profound sense of security and personal space.</p>
     </div>
-
   </template>
 
-  <!-- Olympic National Park (EXAMPLE SIZING APPLIED) -->
+  <!-- Olympic National Park -->
   <template id="olympic-left">
     <div class="caption-left">
       <p class="caption-title">Olympic National Park</p>
       <p class="caption-detail"><em>Promotional Series</em></p>
     </div>
   </template>
+
   <template id="olympic-right">
     <div class="detail-credit">
       Olympic National Park<br><em>Promotional Series</em>
@@ -223,24 +221,21 @@
       <p>Olympic National Park is a promotional series celebrating the park's unique atmosphere. Inspired by its dreamlike quality—the white skies, heavy fog, and disorienting sense of scale—this series brings that feeling directly to the viewer. Using black-and-white risograph photography to amplify the park’s sense of mystery, and intentionally chaotic typography that mirrors quick-changing scenery, the project encourages visitors to unplug and experience the park for themselves.</p>
     </div>
 
-    <!-- Full-width, 16:9 landscape -->
     <figure class="media span-2 ratio-16x9 cover">
       <video src="assets/media/olympic/olympic%20national%20park_compressed.mp4" autoplay muted loop playsinline></video>
       <figcaption>Book</figcaption>
     </figure>
-    <!-- Portrait-ish crop, capped height -->
     <figure class="media ratio-4x5 cover h-520">
       <video src="assets/media/olympic/postcard.mp4" autoplay muted loop playsinline></video>
       <figcaption>Postcard</figcaption>
     </figure>
-    <!-- No crop, compact -->
     <figure class="media ratio-4x5 contain h-520">
       <video src="assets/media/olympic/olympic_social_mock.mp4" autoplay muted loop playsinline></video>
       <figcaption>Social</figcaption>
     </figure>
     <figure class="media span-2 ratio-16x9 cover">
       <video src="assets/media/olympic/olympic_cenima_mockup.mp4" autoplay muted loop playsinline></video>
-      <figcaption>Cenimatic Trailer</figcaption>
+      <figcaption>Cinematic Trailer</figcaption>
     </figure>
   </template>
 
@@ -259,11 +254,10 @@
     <div class="detail-text">
       <p>An editorial piece that captures the resurgence of Western culture as younger generations reimagine its traditions with fresh creativity. It highlights how cowboy culture, y'allternative fashion, and modern country music blend authenticity with innovation—celebrating the enduring spirit of the West in a new era.</p>
     </div>
-              <!-- Full-width, 16:9 landscape -->
-              <figure class="media span-2 ratio-16x9 cover">
-                <video src="assets/media/revival/revival.mp4" autoplay muted loop playsinline></video>
-                <figcaption>Book</figcaption>
-
+    <figure class="media span-2 ratio-16x9 cover">
+      <video src="assets/media/revival/revival.mp4" autoplay muted loop playsinline></video>
+      <figcaption>Book</figcaption>
+    </figure>
   </template>
 
   <!-- Panic -->
@@ -296,9 +290,8 @@
       Chain Reaction<br><em>User Experience | MoMA</em>
     </div>
     <div class="detail-text">
-      <p>Chain Reaction is an exhibition concept for MoMA that explores how one artwork sparks another. I conected to a Newton’s Cradle and used it as a direct design reference. The design uses two typefaces built from perfect circles to reflect that sense of connection and movement. A single black dot became the main visual element and even replaced traditional punctuation, symbolizing the moment where ideas meet and energy transfers. The result is a clean, rhythmic identity that captures how art continuously inspires what comes next.</p>
+      <p>Chain Reaction is an exhibition concept for MoMA that explores how one artwork sparks another. I connected it to a Newton’s Cradle and used it as a direct design reference. The design uses two typefaces built from perfect circles to reflect that sense of connection and movement. A single black dot became the main visual element and even replaced traditional punctuation, symbolizing the moment where ideas meet and energy transfers. The result is a clean, rhythmic identity that captures how art continuously inspires what comes next.</p>
     </div>
-    <!-- Full-width, 16:9 landscape -->
     <figure class="media span-2 ratio-16x9 cover">
       <video src="assets/media/chain/chain_book.mp4" autoplay muted loop playsinline></video>
       <figcaption>Brochure</figcaption>
@@ -307,13 +300,10 @@
       <video src="assets/media/chain/subway videos chain reaction.MP4" autoplay muted loop playsinline></video>
       <figcaption>Advertisement</figcaption>
     </figure>
-    <!-- Portrait-ish crop, capped height -->
     <figure class="media cover h-520" style="aspect-ratio: 9 / 18;">
       <video src="assets/media/chain/chain reaction social final.MP4" autoplay muted loop playsinline></video>
       <figcaption>Social</figcaption>
     </figure>
-    
-    
   </template>
 
   <!-- Spectra -->
