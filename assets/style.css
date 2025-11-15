@@ -23,7 +23,6 @@ a {
   text-decoration: none;
   transition: opacity .2s;
 }
-a:hover { opacity: .6; }
 
 body {
   padding: 20px;
@@ -50,6 +49,7 @@ body {
   font-size: 78px;
   line-height: 80px;
   position: relative;
+  transition: opacity .2s;          /* smooth fade on whole row */
 }
 
 .project-list li + li {
@@ -63,6 +63,19 @@ body {
   font-size: 78px;
   line-height: 74px;
   margin-right: 12px;
+  transition: opacity .2s;          /* allow number to fade too */
+}
+
+/* HOVER BEHAVIOR
+   - hover anywhere on the li (number OR title) → fade both
+   - keep link opacity in sync with the li
+*/
+.project-list li:hover {
+  opacity: .6;
+}
+
+.project-list li:hover a {
+  opacity: 1; /* so the text isn't double-faded (0.6 * 0.6) */
 }
 
 /* ===== LEFT preview ===== */
