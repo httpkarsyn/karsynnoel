@@ -30,7 +30,6 @@ body {
 
 /* ===== identity ===== */
 .identity {
-  /* was 40px – now matches project list spacing */
   margin-bottom: 6px;
 }
 
@@ -41,7 +40,6 @@ body {
   transition: opacity .2s;
 }
 
-/* hover on name so it reads as clickable */
 .name:hover {
   opacity: .6;
 }
@@ -58,7 +56,7 @@ body {
   font-size: 78px;
   line-height: 80px;
   position: relative;
-  transition: opacity .2s;          /* smooth fade on whole row */
+  transition: opacity .2s;
 }
 
 .project-list li + li {
@@ -72,17 +70,13 @@ body {
   font-size: 78px;
   line-height: 74px;
   margin-right: 12px;
-  transition: opacity .2s;          /* allow number to fade too */
+  transition: opacity .2s;
 }
 
-/* HOVER BEHAVIOR
-   - hover anywhere on the li (number OR title) → fade whole row
-*/
 .project-list li:hover {
   opacity: .6;
 }
 
-/* keep text readable (don't double-multiply opacity) */
 .project-list li:hover a {
   opacity: 1;
 }
@@ -115,7 +109,6 @@ body {
   border: 8px solid #eee;
 }
 
-/* main media stage (JS inserts this) */
 .preview-stage {
   position: relative;
   width: 100%;
@@ -133,7 +126,7 @@ body {
   display: block;
   object-fit: cover;
   border: none;
-  background: transparent; /* important: no white flash while fading */
+  background: transparent;
   mix-blend-mode: normal;
   filter: none;
   opacity: 0;
@@ -146,7 +139,6 @@ body {
   pointer-events: none;
 }
 
-/* legacy element (gets removed by JS, but kept for initial render) */
 .preview-img {
   flex: 1 1 0;
   width: 100%;
@@ -184,6 +176,7 @@ body {
 .caption-links a {
   color: rgba(30,30,30,.7);
 }
+
 .caption-links a:hover { opacity: .55; }
 
 .caption-title {
@@ -216,7 +209,6 @@ body {
   transform: translateX(0);
 }
 
-/* header row container */
 .detail-bar {
   display: grid;
   grid-template-columns: 300px 1fr;
@@ -240,7 +232,6 @@ body {
   text-align: left;
 }
 
-/* divider + close */
 .detail-rule {
   border: none;
   border-top: 1px solid rgba(30,30,30,.08);
@@ -254,9 +245,9 @@ body {
   font-size: 11px;
   color: rgba(30,30,30,.7);
 }
+
 .detail-close:hover { opacity: .55; }
 
-/* media grid */
 .detail-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -290,30 +281,22 @@ body {
   color: rgba(30,30,30,.75);
 }
 
-/* ===== media sizing utilities ===== */
+/* ===== aspect ratios ===== */
 .media.ratio-16x9 > video,
 .media.ratio-16x9 > img,
-.media :is(video.ratio-16x9, img.ratio-16x9) {
-  aspect-ratio: 16 / 9;
-}
+.media :is(video.ratio-16x9, img.ratio-16x9) { aspect-ratio: 16 / 9; }
 
 .media.ratio-9x16 > video,
 .media.ratio-9x16 > img,
-.media :is(video.ratio-9x16, img.ratio-9x16) {
-  aspect-ratio: 9 / 16;
-}
+.media :is(video.ratio-9x16, img.ratio-9x16) { aspect-ratio: 9 / 16; }
 
 .media.ratio-4x5 > video,
 .media.ratio-4x5 > img,
-.media :is(video.ratio-4x5, img.ratio-4x5) {
-  aspect-ratio: 4 / 5;
-}
+.media :is(video.ratio-4x5, img.ratio-4x5) { aspect-ratio: 4 / 5; }
 
 .media.ratio-1x1 > video,
 .media.ratio-1x1 > img,
-.media :is(video.ratio-1x1, img.ratio-1x1) {
-  aspect-ratio: 1 / 1;
-}
+.media :is(video.ratio-1x1, img.ratio-1x1) { aspect-ratio: 1 / 1; }
 
 .media.cover > video,
 .media.cover > img,
@@ -333,36 +316,21 @@ body {
 }
 
 .media.h-320 > video,
-.media.h-320 > img,
-.media :is(video.h-320, img.h-320) {
-  max-height: 320px;
-}
+.media.h-320 > img { max-height: 320px; }
 
 .media.h-420 > video,
-.media.h-420 > img,
-.media :is(video.h-420, img.h-420) {
-  max-height: 420px;
-}
+.media.h-420 > img { max-height: 420px; }
 
 .media.h-520 > video,
-.media.h-520 > img,
-.media :is(video.h-520, img.h-520) {
-  max-height: 520px;
-}
+.media.h-520 > img { max-height: 520px; }
 
 .media.h-640 > video,
-.media.h-640 > img,
-.media :is(video.h-640, img.h-640) {
-  max-height: 640px;
-}
+.media.h-640 > img { max-height: 640px; }
 
-/* custom per-item height via CSS var */
 .media > video,
-.media > img {
-  max-height: var(--h, none);
-}
+.media > img { max-height: var(--h, none); }
 
-/* ===== video wrapper with play button ===== */
+/* ===== video play button ===== */
 .video-wrapper {
   position: relative;
   width: 100%;
@@ -384,7 +352,7 @@ body {
   transform: translate(-50%, -50%);
   font-size: 40px;
   color: #eee;
-  background: rgba(30,30, 30, 0.4);
+  background: rgba(30,30,30,0.4);
   border: none;
   border-radius: 50%;
   width: 70px;
@@ -395,12 +363,25 @@ body {
 }
 
 .play-btn:hover {
-  background: rgba(30, 30, 30, 0.7);
+  background: rgba(30,30,30,0.7);
+}
+
+/* ==================================
+   DISCO DADDY (THIS IS THE NEW PART)
+   ================================== */
+
+.disco-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+}
+
+.detail-grid > .disco-stack {
+  grid-column: 1 / -1;
 }
 
 /* ===== responsive ===== */
-
-/* tablet-ish */
 @media (max-width: 900px) {
   .preview-panel,
   .detail-panel {
@@ -437,10 +418,7 @@ body {
   }
 }
 
-/* mobile */
 @media (max-width: 600px) {
-
-  /* homepage text sizes */
   .name {
     font-size: 38px;
     line-height: 28px;
@@ -451,45 +429,21 @@ body {
     line-height: 51px;
   }
 
-  /* hide numbers on mobile */
   .project-list li::before {
     display: none;
     content: none;
   }
 
-  /* preview panel full width on mobile */
   .preview-panel {
-    position: fixed;
-    top: 0;
-    left: 0;
     width: 100vw;
     height: 60vh;
-    border-right: 1px solid rgba(30,30,30,.08);
-    border-bottom: 1px solid rgba(30,30,30,.08);
-    box-shadow: 0 15px 50px rgba(30,30,30,.1);
-    display: none;
-    flex-direction: column;
-    overflow: hidden;
-    z-index: 10;
   }
 
-  .preview-panel.show { display: flex; }
-
-  /* RIGHT PANEL: full-screen overlay */
   .detail-panel {
-    position: fixed;
-    top: 0;
-    right: 0;
     width: 100vw;
     height: 100dvh;
-    background: #eee;
     border: none;
     transform: translateY(100%);
-    transition: transform .28s ease;
-    display: flex;
-    flex-direction: column;
-    z-index: 11;
-    padding-top: 10px;
   }
 
   .detail-panel.show {
@@ -497,32 +451,21 @@ body {
   }
 
   .detail-grid {
-    flex: 1 1 auto;
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
-    padding: 0 18px 18px;
     grid-template-columns: 1fr;
     gap: 14px;
+    padding: 0 18px 18px;
   }
 
   .detail-bar {
     grid-template-columns: 1fr;
     padding: 12px 18px;
-    row-gap: 6px;
-  }
-
-  .detail-rule {
-    margin: 8px 18px 0;
   }
 
   .detail-close {
-    align-self: end;
-    margin: 6px 18px 10px;
     font-size: 12px;
     padding: 6px 8px;
   }
 
-  /* lock background when panel is open (if you ever add this class) */
   body.panel-open {
     overflow: hidden;
   }
