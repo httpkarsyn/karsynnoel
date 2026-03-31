@@ -81,112 +81,7 @@ body {
   opacity: 1;
 }
 
-/* ===== LEFT preview ===== */
-.preview-panel {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 50vw;
-  height: 60vh;
-  background: #eee;
-  border-right: 1px solid rgba(30,30,30,.08);
-  border-bottom: 1px solid rgba(30,30,30,.08);
-  box-shadow: 0 15px 50px rgba(30,30,30,.1);
-  display: none;
-  flex-direction: column;
-  overflow: hidden;
-  z-index: 10;
-}
 
-.preview-panel.show { display: flex; }
-
-.preview-inner {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  background: #eee;
-  border: 8px solid #eee;
-}
-
-.preview-stage {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  flex: 1 1 auto;
-  overflow: hidden;
-  background: #eee;
-}
-
-.preview-media {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-  border: none;
-  background: transparent;
-  mix-blend-mode: normal;
-  filter: none;
-  opacity: 0;
-  transition: opacity 300ms ease;
-  will-change: opacity;
-}
-
-.preview-media.show {
-  opacity: 1;
-  pointer-events: none;
-}
-
-.preview-img {
-  flex: 1 1 0;
-  width: 100%;
-  height: 0;
-  min-height: 0;
-  display: block;
-  object-fit: cover;
-}
-
-/* caption */
-.caption {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  padding: 12px 18px;
-  background: #eee;
-  border-top: 1px solid rgba(30,30,30,.05);
-  font-size: 11px;
-  line-height: 1.4;
-  color: rgba(0,0,0,.85);
-}
-
-.caption-left {
-  display: flex;
-  flex-direction: column;
-}
-
-.caption-links {
-  display: flex;
-  gap: 12px;
-  font-size: 11px;
-  white-space: nowrap;
-}
-
-.caption-links a {
-  color: rgba(30,30,30,.7);
-}
-
-.caption-links a:hover { opacity: .55; }
-
-.caption-title {
-  font-weight: 500;
-  margin-bottom: 2px;
-}
-
-.caption-detail {
-  opacity: .8;
-}
 
 /* ===== RIGHT detail panel ===== */
 .detail-panel {
@@ -199,8 +94,8 @@ body {
   border-left: 1px solid rgba(30,30,30,.08);
   transform: translateX(100%);
   transition: transform .28s ease;
-  display: flex;
-  flex-direction: column;
+  display: block;
+  overflow-y: auto;
   z-index: 11;
   padding-top: 10px;
 }
@@ -217,6 +112,8 @@ body {
   padding: 0 18px;
   margin-top: 0;
 }
+
+
 
 .detail-credit {
   font-size: 11px;
@@ -255,8 +152,7 @@ body {
   gap: 14px;
   padding: 0 18px 18px;
   margin-top: 6px;
-  overflow: auto;
-  flex: 1 1 auto;
+  overflow: visible;
 }
 
 .media {
@@ -434,10 +330,7 @@ body {
     content: none;
   }
 
-  .preview-panel {
-    width: 100vw;
-    height: 60vh;
-  }
+
 
   .detail-panel {
     width: 100vw;
